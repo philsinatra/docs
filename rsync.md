@@ -1,5 +1,7 @@
 # rsync
 
+    $ rsync -va --progress source_dir destination_dir
+
 Here is the simple example of syncing two folders from terminal:
 
     $ rsync -va --delete ~/Folder1/ ~/Folder2/
