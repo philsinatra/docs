@@ -1,5 +1,20 @@
 # Terminal Goodies
 
+## Find
+
+    $ find path_to_search . type -f -name "*text_to_find*"
+
+Use `-maxdepth` to only return the current directory, not recursivly search inside subfolders
+
+Use `-type f` to only return files and not directories or device nodes or whatever else
+
+Use a combination if `-not` and `-name` to avoid the files with names you don't want
+
+It might come together like this:
+
+    $ find /path/to/uploads -maxdepth 1 -type f -not -name 't_*'
+
+
 ## CURL
 
     $ curl http://pathtofile.xml -o ~/Desktop/output_filename.xml
