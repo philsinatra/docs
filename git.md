@@ -220,6 +220,85 @@ List the conflicted files in git
 
     $ git ls-files -u
 
+## Log
+
+    git log
+
+### Log Stats
+
+If you pass the –stat option to ‘git log’, it will show you which files have changed in that commit and how many lines were added and removed from each.
+
+    $ git log --stat
+
+View the history of a specific file
+
+    $ git log -p filename
+
+
+Get the commit ID of the last commit:
+
+    $ git log --format="%H" -n 1
+
+Get a list of the files included in the last commit:
+
+    $ git diff-tree --no-commit-id --name-only -r commit_id
+
+Formatting the Log
+
+You can also format the log output almost however you want. The ‘–pretty’ option can take a number of preset formats, such as ‘oneline’.
+
+    $ git log --pretty=oneline
+    $ git log --pretty="short
+    $ git log --pretty="format: '%h : %s' --graph
+
+Log Statistics
+
+    $ git shortlog
+
+Show the log for n number of commits. For example, git log -2 for the last two commits.
+
+    $ git log -
+
+Show the log with output for files changed and insertions/deletions. Basically the normal output of git commit appended to each message.
+
+    $ git log --stat
+
+Attaches SVN-like add/modified/deleted for each commit. Very basic but still gives a decent idea about what’s changed.
+
+    $ git log --name-status
+
+Compresses each commit to its SHA1 and message on one line. Pipe to wc -l if you want to count commits!
+
+    $ git log --pretty=oneline
+
+See if there’s any commits that have not been pushed to your origin remote.
+
+    $ git log origin..HEAD
+
+See all commits that affected only the file given.
+
+    $ git log 
+
+See all commits that dave has worked on, and ignore any merge commits to reduce noise.
+
+    $ git log --no-merges --author=dave
+
+View commits that have happened since last week. Could easily be replaced with yesterday, 1 year ago, 3 months ago, 1/20/09 and so on. There’s also other time based options: –after, –until, and –before if you want to get creative.
+
+    $ git log --since="1 week ago"
+
+Search through commit messages to find ones that start with the string “Bump”. This will take in any regular expression, so if you’re looking for that one commit you did and all you can remember is a part of the message, –grep will find it.
+
+    $ git log --grep='^Bump'
+
+Don’t want to use less to view your commits? This option will just give you the straight output if you need it
+
+    $ git --no-pager log
+
+Use the gitk command to review the history of a specific document using the Wish comparison application:
+
+    $ gitk [filename]
+
 ## References
 
 [http://philsinatra.net/blog/git/](http://philsinatra.net/blog/git/)
