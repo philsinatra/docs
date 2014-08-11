@@ -3,6 +3,10 @@
 ## Find
 
     $ find path_to_search . type -f -name "*text_to_find*"
+    # find and copy
+    $ find path_to_search . type -f -name "*text_to_find*" -exec cp "{}" destination_path \;
+
+### Details
 
 Use `-maxdepth` to only return the current directory, not recursivly search inside subfolders
 
