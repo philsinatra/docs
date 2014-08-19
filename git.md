@@ -75,6 +75,96 @@ Add a .gitignore file to the root of your project. Below is a starter file:
 
 ## Helpful Common Commands
 
+### Branching and Merging
+
+    $ git checkout -b iss53
+    Switched to a new branch "iss53"
+
+This is shorthand for
+
+    $ git branch iss53
+    $ git checkout iss53
+
+You work on your web site and do some commits. Doing so moves the iss53 branch forward, because you have it checked out.
+
+    $ vim index.html
+    $ git commit -a -m 'added a new footer [issue 53]'
+
+Switch back to your master branch
+
+    $ git checkout master
+    Switched to branch "master"
+
+Run tests and merge if good to go.
+
+    $ git merge hotfix
+    Updating f42c576..3a0874c
+    Fast forward
+     README |    1 -
+     1 files changed, 0 insertions(+), 1 deletions(-)
+
+Delete the old unneeded branch.
+
+    $ git branch -d hotfix
+    Deleted branch hotfix (3a0874c).
+
+If you have to merge only specific files from a feature branch, you can use git checkout with the name of the feature branch and the file(s) you need to merge
+
+    $ git branch
+    * master
+      feature_branch
+    $ git checkout feature_branch path/to/file1 path/to/file2
+    $ git status
+    # On branch master
+    # Changes to be committed:
+    #   (use "git reset HEAD ..." to unstage)
+    #
+    #   new file:   path/to/file1
+    #   new file:   path/to/file2
+    #
+    $ git commit -m "Merge message"
+    [master]: created 4d3e37b: "'Merge' update code from 'feature_branch' branch"
+    4 files changed, 72 insertions(+), 0 deletions(-)
+    create mode 100644 path/to/file1
+    create mode 100644 path/to/file2
+
+Seeing which local branches are tracking a remote branch
+
+    $ git remote show origin
+
+Update local branch with remote content
+
+    $ git merge origin/master
+
+I screwed up, how do I reset my checkout?
+
+    $ git checkout -f
+
+Reset to a specific commit
+
+    $ git reset --hard {SHA1}
+
+Show differences in branches
+
+    $ git diff --name-status master..branch
+    $ git diff --stat --color master..branchName
+
+If you want to see what would change in detail if you merged in a particular branch:
+    $ git diff ...(branch)
+
+Show a file from a different branch without checking it out
+
+    $ git show branch:file
+    $ git show branch:file > export_file
+
+Merge a branch –dry-run
+
+    $ git merge --no-commit --no-ff branchtomergein
+
+#### Test a pull/merge request before accepting on BitBucket
+
+[Read Article](http://www.electricmonk.nl/log/2014/03/31/test-a-pull-merge-request-before-accepting-on-bitbucket/)
+
 ### Push
 
 So let’s say you have checked out a new branch, committed some awesome changes, but now you need to share this branch though with another developer. You can push the branch up to a remote very simply:
