@@ -26,8 +26,3 @@ j | junk the path
 r | recursive     
 
 The `e` option stands for _encryption_ the `j` for _junk the path_ (otherwise the zip command will archive the complete folder hierarchy leading to your target folder, which you probably don’t want), and `r` stands for _recursive_ which will force the zip command to include the entire contents of the folder in the archive. (Otherwise it will only archive the folder itself without its contents, which is not exactly useful.)
-
-First Header  | Second Header
-------------- | -------------
-Content Cell  | Content Cell
-Content Cell  | Content Cell
