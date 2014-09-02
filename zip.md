@@ -8,8 +8,10 @@ Once you execute this command, Mac OS X will ask for the desired password (twice
 
 ### Parameters
 
-| name           | archive file name (no .zip extension) |
-| path_to_folder | target directory to be zipped         |
+Parameter  | Description
+------------- | -------------
+name           | archive file name (no .zip extension) 
+path_to_folder | target directory to be zipped         
 
 `[name]` is the name you want to give to the resulting archive file (without the ".zip" extension, which the zip command will add automatically).
 
@@ -17,8 +19,15 @@ And `[path_to_folder]` is the complete name of the folder with its full path. In
 
 ### Flags
 
-| e | encryption    |
-| j | junk the path |
-| r | recursive     |
+Flag  | Description
+------------- | -------------
+e | encryption    
+j | junk the path 
+r | recursive     
 
 The `e` option stands for _encryption_ the `j` for _junk the path_ (otherwise the zip command will archive the complete folder hierarchy leading to your target folder, which you probably don’t want), and `r` stands for _recursive_ which will force the zip command to include the entire contents of the folder in the archive. (Otherwise it will only archive the folder itself without its contents, which is not exactly useful.)
+
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
