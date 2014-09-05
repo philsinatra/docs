@@ -168,6 +168,13 @@ Merge a branch –dry-run
 
 [Read Article](http://www.electricmonk.nl/log/2014/03/31/test-a-pull-merge-request-before-accepting-on-bitbucket/)
 
+Amend changes to the previous commit
+
+    $ git add .
+    $ git commit --amend
+
+If you don't specify a commit message with `-m` you will be prompted with the previous commit message as a default.
+
 ### Push
 
 So let’s say you have checked out a new branch, committed some awesome changes, but now you need to share this branch though with another developer. You can push the branch up to a remote very simply:
