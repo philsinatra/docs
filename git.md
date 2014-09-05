@@ -150,6 +150,7 @@ Show differences in branches
     $ git diff --stat --color master..branchName
 
 If you want to see what would change in detail if you merged in a particular branch:
+    
     $ git diff ...(branch)
 
 Show a file from a different branch without checking it out
