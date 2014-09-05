@@ -146,11 +146,14 @@ Reset to a specific commit
 
 Show differences in branches
 
-    $ git diff --name-status master..branch
-    $ git diff --stat --color master..branchName
+    $ git diff --name-status branch_name_1 branch_name_2
+    $ git diff --stat --color branch_name_1 branch_name_2
 
 If you want to see what would change in detail if you merged in a particular branch:
-    $ git diff ...(branch)
+    
+    $ git diff (branch)
+    # show a specific file
+    $ git diff (branch) (filename)
 
 Show a file from a different branch without checking it out
 
