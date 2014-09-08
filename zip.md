@@ -1,5 +1,25 @@
 # Zip
 
+## Cross Platform Zip
+
+To compress:
+
+    $ zip -r archive_name.zip folder_to_compress
+
+To extract:
+
+    $ unzip archive_name.zip
+
+Create a zip without invisibile OSX files (.DS_Store etc), us the **-X** option:
+
+    $ zip -r -X archive_name.zip folder_to_compress
+
+List the details about a zip archive:
+
+    $ zipinfo file[.zip]
+
+[zipinfo details](http://linux.about.com/library/cmd/blcmdl1_zipinfo.htm)
+
 ## Create a password protected and encrypted zip
 
     $ zip -ejr [name] [path_to_folder]
