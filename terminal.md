@@ -57,6 +57,8 @@ symbolic link to all files in a folder (OSX)
     $ chown root filename
     $ chgrp root filename
     $ chmod 777 filename
+    # change user:group in one line
+    $ chown user:group filename
 
 ## Change permissions to all sub files
 
