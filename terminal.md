@@ -91,6 +91,27 @@ To list contents of zipped file:
 
     $ for file in *.zipd; do mv "$file" "${file%zipd}zip"; done
 
+## Batch Remove Spaces In File Names
+
+    #! /bin/sh
+    for n in *
+    do
+    OldName=$n
+    #NewName=`echo $n | tr -d " "`
+    NewName=`echo $n | tr -s " " "-"`
+    echo $NewName
+    mv "$OldName" "$NewName"
+    done
+
+## Create Executable Shell Script
+
+    $ ls
+    myscript.sh
+    $ mv myscript.sh myscript
+    $ chmod 755 myscript
+    # To use the script from the command line:
+    $ ./myscript
+
 ## Show files by edit date
 
 List files edited in the past day
