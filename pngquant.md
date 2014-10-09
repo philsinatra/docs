@@ -2,7 +2,7 @@
 
 [pngquant.org](http://pngquant.org/)
 
-    # Run the sccript
+    # Run the script
     $ ./pngquant list_file_names
     
     # Removed custom suffix
