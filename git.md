@@ -160,6 +160,11 @@ Show a file from a different branch without checking it out
     $ git show branch:file
     $ git show branch:file > export_file
 
+Show what branches have been merged
+
+    $ git branch --merged
+    $ git branch --no-merged
+
 Merge a branch –dry-run
 
     $ git merge --no-commit --no-ff branchtomergein
