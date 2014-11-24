@@ -404,6 +404,75 @@ Use the gitk command to review the history of a specific document using the Wish
 
     $ gitk [filename]
 
+## Tags
+
+Git has three different type of tags:
+
+- Lightweight tags
+- Annotated tags
+- Signed tags
+
+Let’s start with lightweight tags.
+
+### Lightweight tags
+
+In the previous cheat sheet only the lightweight local tags were discussed. A lightweight tag is nothing more than a reference to a particular revision or SHA1 object name in the repository. This kind of tag is quick and easy and very usable for local development to mark places in your commit history.
+
+Creating a lightweight tag is easy:
+
+    $ git tag tag_name
+
+Viewing available tags is done with -l:
+
+    $ git tag -l
+
+### Annotated tags
+
+Annotated tags are almost like lightweight tags, the big difference is that they contain a message. Normally this message indicated why this tag is interesting. Use the -a option to create an annotated tag.
+
+    $ git tag -a tag_name
+
+Since a message is required for annotated tags, you will be prompted with an editor to enter a message, or you can use the -m option to specify one directly.
+
+    $ git tag -a -m "Tagging release 1.0" v1.0
+
+To view annotated tags you can use the same -l option as before, but you have to instruct git to show the annotation messages as well:
+
+    $ git tag -l -n1
+
+This will not only show the messages for the annotated tags, it will also show the commit message of the revisions tagged with lightweight tags as well.
+
+### Signed tags
+
+Signed tags take annotated tags a step further, they include an OpenPG signature to provide trust. While gits SHA1 tags provide integrity for the repository, the OpenPG signature makes sure that a trustworthy person created the tag.
+
+To create a signed tag you’ll need to have GPG or some other OpenPG tool setup and use the -s option to sign the tag:
+
+    $ git tag -s -m "Tagging release 2.0" v2.0
+
+The -s options implies the -a option, so here too a message is required.
+
+To verify a signed tag you can run the following:
+
+    $ git tag -v v2.0
+
+### Deleting tags
+
+There are times when you want to remove tags as well. This quite easy:
+
+    $ git tag -d tag_name
+
+To remove a tag on a remote repository, you should do a special push:
+
+    $ git push origin :refs/tags/tag_name
+
+### Pushing tags
+
+To push your tags to a remote repository, use the following command to push all tags:
+
+    $ git push origin --tags
+
+
 ## References
 
 [http://philsinatra.net/blog/git/](http://philsinatra.net/blog/git/)
