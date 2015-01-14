@@ -102,6 +102,11 @@ To list contents of zipped file:
     echo $NewName
     mv "$OldName" "$NewName"
     done
+    
+To run this script, `cd` into the destination directory and then execute. Example:
+
+    $ cd directory/my-files/
+    $ ~/Documents/./remove-spaces *
 
 ## Create Executable Shell Script
 
