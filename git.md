@@ -42,7 +42,7 @@ Add a .gitignore file to the root of your project. Below is a starter file:
     *.o
     *.so
     *.sass-cache
-    
+
     # Packages #
     ############
     # it's better to unpack these files and commit the raw source
@@ -55,13 +55,13 @@ Add a .gitignore file to the root of your project. Below is a starter file:
     *.rar
     *.tar
     *.zip
-    
+
     # Logs and databases #
     ######################
     *.log
     *.sql
     *.sqlite
-    
+
     # OS generated files #
     ######################
     .DS_Store
@@ -150,7 +150,7 @@ Show differences in branches
     $ git diff --stat --color branch_name_1 branch_name_2
 
 If you want to see what would change in detail if you merged in a particular branch:
-    
+
     $ git diff (branch)
     # show a specific file
     $ git diff (branch) (filename)
@@ -179,6 +179,76 @@ Amend changes to the previous commit
     $ git commit --amend
 
 If you don't specify a commit message with `-m` you will be prompted with the previous commit message as a default.
+
+
+## Configuring a remote fork (upstream)
+
+To sync changes you make in a fork with the original repository, you must configure a remote that points to the upstream repository in Git.
+
+1. Open Terminal (for Mac users) or the command prompt (for Windows and Linux users).
+2. List the current configured remote repository for your fork.
+```bash
+git remote -v
+# origin  https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)
+# origin  https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)
+```
+
+<ol start="3"><li>Specify a new remote upstream repository that will be synced with the fork.</li></ol>
+```bash
+git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
+```
+
+<ol start="4"><li>Verify the new upstream repository you've specified for your fork.</li></ol>
+```bash
+git remote -v
+# origin    https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)
+# origin    https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)
+# upstream  https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (fetch)
+# upstream  https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (push)
+```
+[reference](https://help.github.com/articles/configuring-a-remote-for-a-fork/)
+
+## Syncing A Fork
+
+1. Open Terminal (for Mac users) or the command prompt (for Windows and Linux users).
+2. Change the current working directory to your local project.
+3. Fetch the branches and their respective commits from the upstream repository. Commits to `master` will be stored in a local branch, `upstream/master`.
+```bash
+git fetch upstream
+# remote: Counting objects: 75, done.
+# remote: Compressing objects: 100% (53/53), done.
+# remote: Total 62 (delta 27), reused 44 (delta 9)
+# Unpacking objects: 100% (62/62), done.
+# From https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY
+#  * [new branch]      master     -> upstream/master
+```
+<ol start="4"><li>Check out your fork's local master branch.</li></ol>
+```bash
+git checkout master
+# Switched to branch 'master'
+```
+<ol start="5"><li>Merge the changes from `upstream/master` into your local `master` branch. This brings your fork's `master` branch into sync with the upstream repository, without losing your local changes.</li></ol>
+```bash
+git merge upstream/master
+# Updating a422352..5fdff0f
+# Fast-forward
+#  README                    |    9 -------
+#  README.md                 |    7 ++++++
+#  2 files changed, 7 insertions(+), 9 deletions(-)
+#  delete mode 100644 README
+#  create mode 100644 README.md
+```
+
+If your local branch didn't have any unique commits, Git will instead perform a "fast-forward":
+```bash
+git merge upstream/master
+# Updating 34e91da..16c56ad
+# Fast-forward
+#  README.md                 |    5 +++--
+#  1 file changed, 3 insertions(+), 2 deletions(-)
+```
+
+[reference](https://help.github.com/articles/syncing-a-fork/)
 
 ### Push
 
@@ -300,7 +370,7 @@ Delete untracked files/directories
         feature_branch                  tracked
         master                          tracked
         refs/remotes/origin/feature_old stale (use 'git remote prune' to remove)
-    
+
 Sometimes branches are deleted from a remote repo. By default, git fetch will not remove any remote-tracking branches that have been deleted on the remote repo. Running git remote prune REMOTENAME will delete these tracking branches.
 
     $ git remote prune origin
@@ -308,7 +378,7 @@ Sometimes branches are deleted from a remote repo. By default, git fetch will no
         Pruning origin
         URL: https://...
          * [pruned] feature_old
-    
+
 Use the –dry-run flag to review what will be pruned.
 
 ### Cleanup
@@ -382,7 +452,7 @@ See if there’s any commits that have not been pushed to your origin remote.
 
 See all commits that affected only the file given.
 
-    $ git log 
+    $ git log
 
 See all commits that dave has worked on, and ignore any merge commits to reduce noise.
 
