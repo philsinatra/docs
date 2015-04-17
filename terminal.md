@@ -1,10 +1,11 @@
 # Terminal Goodies
 
 ## Find
-
-    $ find path_to_search . type -f -name "*text_to_find*"
-    # find and copy
-    $ find path_to_search . type -f -name "*text_to_find*" -exec cp "{}" destination_path \;
+```bash
+$ find path_to_search . type -f -name "*text_to_find*"
+# find and copy
+$ find path_to_search . type -f -name "*text_to_find*" -exec cp "{}" destination_path \;
+```
 
 ### Details
 
@@ -15,19 +16,21 @@ Use `-type f` to only return files and not directories or device nodes or whatev
 Use a combination if `-not` and `-name` to avoid the files with names you don't want
 
 It might come together like this:
-
-    $ find /path/to/uploads -maxdepth 1 -type f -not -name 't_*'
-
+```bash
+$ find /path/to/uploads -maxdepth 1 -type f -not -name 't_*'
+```
 
 ## CURL
-
-    $ curl http://pathtofile.xml -o ~/Desktop/output_filename.xml
+```bash
+$ curl http://pathtofile.xml -o ~/Desktop/output_filename.xml
+```
 
 ## SCP
 
 The basic format of the command:
-
-    $ scp [options] original_file destination_file
+```bash
+$ scp [options] original_file destination_file
+```
 
 To format the remote portion:
 
@@ -36,111 +39,131 @@ To format the remote portion:
 *Note: to copy whole directories use the [-r] flag*
 
 ## symbolic link
-
-    $ ln -s <path_to_file_that_should_be_linked> .
+```bash
+$ ln -s <path_to_file_that_should_be_linked> .
+```
 
 symbolic link to all files in a folder (OSX)
-
-    $ ln -s <path_to_file_that_should_be_linked/*> .
+```bash
+$ ln -s <path_to_file_that_should_be_linked/*> .
+```
 
 ## File copy maintaining Date/Owner info
-
-    $ cp -a path/filename
+```bash
+$ cp -a path/filename
+```
 
 ## Open files in specific apps
 
 [http://hints.macworld.com/article.php?story=2004012218171997](http://hints.macworld.com/article.php?story=2004012218171997)
-
-    $ open -a "Adobe Photoshop 7.0" foo.jpg
+```bash
+$ open -a "Adobe Photoshop 7.0" foo.jpg
+```
 
 ## File Permissions and Ownership
-    $ chown root filename
-    $ chgrp root filename
-    $ chmod 777 filename
-    # change user:group in one line
-    $ chown user:group filename
+```bash
+$ chown root filename
+$ chgrp root filename
+$ chmod 777 filename
+# change user:group in one line
+$ chown user:group filename
+```
 
 ## Change permissions to all sub files
+```bash
+# goto content area
+$ cd /var/www/vhosts/xxxxx.com/
+# change to owned by nobody user:group
+$ chown -R nobody:nobody .
+# correct permissions all files at current directory and below
+$ find . -type f -exec chmod 664 {} \;
+# correct permissions all directories at current directory and below
+$ find . -type d -exec chmod 775 {} \;
+```
 
-    # goto content area
-    $ cd /var/www/vhosts/xxxxx.com/
-    # change to owned by nobody user:group
-    $ chown -R nobody:nobody .
-    # correct permissions all files at current directory and below
-    $ find . -type f -exec chmod 664 {} \;
-    # correct permissions all directories at current directory and below
-    $ find . -type d -exec chmod 775 {} \;
-
-##Directory compare and txt list output
+## Directory compare and txt list output
 
 compare directories and export txt list of differences
-
-    $ diff -qr dirA dirB | grep -v -e 'DS_Store' -e 'Thumbs' | sort > diffs.txt
+```bash
+$ diff -qr dirA dirB | grep -v -e 'DS_Store' -e 'Thumbs' | sort > diffs.txt
+```
 
 ## List contents of zipped file
 
 To list contents of zipped file:
-
-    $ unzip -l filename.zip
+```bash
+$ unzip -l filename.zip
+```
 
 ## Copy
-    $ cd /destination of copy/
-    $ cp -R /directory_files to copy .
+```bash
+$ cd /destination of copy/
+$ cp -R /directory_files to copy .
+```
 
 ## Batch Rename
-
-    $ for file in *.zipd; do mv "$file" "${file%zipd}zip"; done
+```bash
+$ for file in *.zipd; do mv "$file" "${file%zipd}zip"; done
+```
 
 ## Batch Remove Spaces In File Names
+```bash
+#! /bin/sh
+for n in *
+do
+OldName=$n
+#NewName=`echo $n | tr -d " "`
+NewName=`echo $n | tr -s " " "-"`
+echo $NewName
+mv "$OldName" "$NewName"
+done
+```
 
-    #! /bin/sh
-    for n in *
-    do
-    OldName=$n
-    #NewName=`echo $n | tr -d " "`
-    NewName=`echo $n | tr -s " " "-"`
-    echo $NewName
-    mv "$OldName" "$NewName"
-    done
-    
 To run this script, `cd` into the destination directory and then execute. Example:
-
-    $ cd directory/my-files/
-    $ ~/Documents/./remove-spaces *
+```bash
+$ cd directory/my-files/
+$ ~/Documents/./remove-spaces *
+```
 
 ## Create Executable Shell Script
-
-    $ ls
-    myscript.sh
-    $ mv myscript.sh myscript
-    $ chmod 755 myscript
-    # To use the script from the command line:
-    $ ./myscript
+```bash
+$ ls
+myscript.sh
+$ mv myscript.sh myscript
+$ chmod 755 myscript
+# To use the script from the command line:
+$ ./myscript
+```
 
 ## Show files by edit date
 
 List files edited in the past day
-
-    $ find . -type f -newermt 2011-06-07
-    $ find . -type f -newermt 2011-06-06 ! -newermt 2011-06-07 | sort > ~/Desktop/list.txt
+```bash
+$ find . -type f -newermt 2011-06-07
+$ find . -type f -newermt 2011-06-06 ! -newermt 2011-06-07 | sort > ~/Desktop/list.txt
+```
 
 ## Outgoing IP address
-    $ % curl ifconfig.me/all/json
+```bash
+$ % curl ifconfig.me/all/json
+```
 
 ## Network Commands
 
 [http://www.computerhope.com/](http://www.computerhope.com/)
 
 ## Extract files from multiple folders
-
-    $ find path/to/extract/from -name *.mp3 -exec cp {} /path/to/destination \;
+```bash
+$ find path/to/extract/from -name *.mp3 -exec cp {} /path/to/destination \;
+```
 
 ## sftp / ssh
 
 To access a remote server without the use of a public key use:
-
-    $ ssh -o "PubkeyAuthentication no" user@server
-    $ sftp -o "PubkeyAuthentication no" user@server
+```bash
+$ ssh -o "PubkeyAuthentication no" user@server
+$ sftp -o "PubkeyAuthentication no" user@server
+```
 
 Some helpful ftp commands:
 
@@ -155,5 +178,3 @@ Some helpful ftp commands:
 - get:    receive file from remote host to local client
 - put:    send file from local client to remote host
 - help:   display help text
-
-

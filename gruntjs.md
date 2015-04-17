@@ -3,12 +3,14 @@
 [http://gruntjs.com/](http://gruntjs.com/)
 
 Initialize a new project – setup a new package.json file:
-
-    $ npm init
+```bash
+$ npm init
+```
 
 Install dependencies from the package.json file:
-
-    $ npm install
+```bash
+$ npm install
+```
 
 ## Resources
 
