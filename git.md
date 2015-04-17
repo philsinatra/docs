@@ -226,7 +226,8 @@ $ git commit --amend
 
 If you don't specify a commit message with `-m` you will be prompted with the previous commit message as a default.
 
-<a name="forks"></a>## Forks
+<a name="forks"></a>
+## Forks
 
 ### Configuring a remote fork (upstream)
 
