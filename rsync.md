@@ -1,24 +1,51 @@
-# rsync
-```bash
-$ rsync -va --progress source_dir destination_dir
-```
+# [rsync](http://linux.die.net/man/1/rsync)
 
-Here is the simple example of syncing two folders from terminal:
+## Basic Syntax
 ```bash
+# rsync options source destination
 $ rsync -va --delete ~/Folder1/ ~/Folder2/
 ```
 
-What this line does is comparing contents of Folder1 with what you have in Folder2 and copies all new and newer files and folders from Folder1 to Folder2.
+## Common Options
+- -v : verbose
+- -r : copies data recursively (but don’t preserve timestamps and permission while transferring data
+- -a : archive mode, archive mode allows copying files recursively and it also preserves symbolic - links, file permissions, user & group ownerships and timestamps
+- -z : compress file data
+- -h : human-readable, output numbers in a human-readable format
+- -l = links ; copy symlinks as symlinks
+- -p = perms ; preserve permissions
+- -t = times ; preserve times
+- -g = group ; preserve group
+- -o = owner ; preserve owner (super-user only)
+- -D = same as --devices -- specials
+- --devices = preserve device files (super users only)
+- --specials = preserve special files
 
-This `–delete` option tells it that you want also to delete files and folders from Folder2 that do not exist in Folder1. So in case that you’d like to leave those files/folders in Folder2, you just omit this part.
+## Show Progress
+Show the progress while transferring data with the `--progress` option.
 
-Option `-va` hides two options actually, `v` stands for Verbose, so it will inform you what’s being done.
+## Automatically Delete source Files after successful Transfer
+automatic deletion can be done using `–-remove-source-files` option
 
-And `a` stands for archive mode, which means that the operation will be recursive so it looks inside of all subfolders you have in Folder1 and Folder2, and that it will keep the permissions intact and also some other things.
+## Dry Run
+`--dry-run`
 
-You can always check the manual of Rsync by typing `man rsync` in terminal.
+Use of this option will not make any changes only do a dry run of the command and shows the output of the command, if the output shows exactly same you want to do then you can remove `--dry-run`  option from your command and run on the terminal.
 
-In case you don’t want to sync some particular files or folders you can specify it with `–exclude` option. So for example if you don’t want to sync file named "leave_me_alone.txt" you just add this "–exclude=’leave_me_alone.txt’", so your whole command would look like:
+## Update the remote only if a newer version is on the local filesystem
+Copying files over the have been updated more recently on the local filesystem is done with the `--update` flag. The behavior is now like this:
+
+1. Any files that do not exist on the remote system are copied over
+2. Any files that exist on both local and remote that have a newer timestamp on the local server are copied over. (Conversely, any files that have an older timestamp are not copied over).
+view sourceprint?
+```bash
+$ rsync --update -raz --progress source/ destination/
+# Example
+$ rsync --dry-run --update -vhrz --progress source/directory destination
+```
+
+## Include/Exclude/Delete
+In case you don’t want to sync some particular files or folders you can specify it with `–exclude` option. So for example if you don’t want to sync file named "leave_me_alone.txt" you just add this `–exclude='leave_me_alone.txt'`, so your whole command would look like:
 ```bash
 $ rsync -va --exclude='leave_me_alone.txt' --delete ~/Folder1/ ~/Folder2/
 ```
@@ -33,25 +60,19 @@ To only include certain file types, use a combination of the --include and --exc
 $ rsync -a --include '*/' --include '*.MOV' --exclude '*' source destination
 ```
 
+If a file or directory not exist at the source, but already exists at the destination, you might want to delete that existing file/directory at the target while syncing .
+
+We can use `–delete` option to delete files that are not there in source directory.
+
 But the real power comes from the fact that you can use patterns, so if you have a lot of let’s say Microsoft Word files that you’d like to ignore for some reason, you can do this:
 ```bash
 $ rsync -va --exclude='*.doc' --delete ~/Folder1/ ~/Folder2/
 ```
 
-To Archive or not?
-```bash
--a, --archive = archive mode; same as -rlptgoD (no -H, -A)
+[more `-exclude` examples](#exclude_examples)
 
--r = recursive
--l = links ; copy symlinks as symlinks
--p = perms ; preserve permissions
--t = times ; preserve times
--g = group ; preserve group
--o = owner ; preserve owner (super-user only)
--D = same as --devices -- specials
---devices = preserve device files (super users only)
---specials = preserve special files
-```
+## References
+- [Tecmint](http://www.tecmint.com/rsync-local-remote-file-synchronization-commands/)
 
 ## Multiple Sources
 
@@ -65,7 +86,8 @@ ex: copy both folders, exclude .psd files
 $ rsync -avR --exclude='*.psd' /Users/username/Pictures ~/Desktop/
 ```
 
-Exclude examples:
+<a name="exclude_examples"></a>
+### Exclude examples:
 
 [http://www.thegeekstuff.com/](http://www.thegeekstuff.com/)
 
