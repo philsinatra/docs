@@ -652,4 +652,5 @@ Users are encouraged to run this task on a regular basis within each repository 
 <a name="links"></a>
 ## References
 
-[http://philsinatra.net/blog/git/](http://philsinatra.net/blog/git/)
+- [First Aid Git](http://ricardofilipe.com/projects/firstaidgit/#/)
+- [http://philsinatra.net/blog/git/](http://philsinatra.net/blog/git/)
