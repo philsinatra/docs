@@ -11,6 +11,23 @@
 </IfModule>
 ```
 
+### Users
+
+To add a user to an existing .htpasswd file, use the `htpasswd` command without the `-c` parameter:
+
+```
+htpasswd .htpasswd membertwo
+New password:
+Re-type new password:
+Adding password for user membertwo
+```
+
+Adjust the `require` line of the `.htaccess` file to account for the new user:
+
+```
+Require user originaluser membertwo
+```
+
 ## Mime Type Support
 
 ```
