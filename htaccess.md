@@ -36,4 +36,5 @@ AddType video/ogg .ogv .ogg
 AddType video/webm .webm
 AddType video/x-m4v .m4v
 AddType video/mp4 .mp4
+AddType application/json .json
 ```
