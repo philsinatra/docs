@@ -214,6 +214,39 @@ Merge a branch –dry-run
 $ git merge --no-commit --no-ff branchtomergein
 ```
 
+### Remove, Reset and Rollback Commits
+
+Use `git log` to see the most recent commits. Let's say you want to rever the last three commits:
+
+```bash
+git reset --hard HEAD-3
+```
+
+If you only want the last commit to be removed:
+
+```bash
+git reset --hard HEAD-1
+```
+
+It's also possible to roll back to a specific commit by using the SHA hash:
+
+```bash
+git reset --hard d3fla8
+```
+
+In case you already pushed your changes to a remote repository, you can't use git reset, because it will wreak havoc with other people's repositories later. Instead, you could revert your commit (e.g. create a new commit, undoing a previous one).
+
+Note that git revert does not walk back into history, but only works on a specific commit or range of commits. To use my previous examples:
+
+```bash
+git revert HEAD~3..HEAD
+git revert HEAD~1..HEAD
+git revert d3f1a8..master
+```
+
+Optionally specify the `--no-commit` option to see what's being reverted.
+
+
 #### Test a pull/merge request before accepting on BitBucket
 
 [Read Article](http://www.electricmonk.nl/log/2014/03/31/test-a-pull-merge-request-before-accepting-on-bitbucket/)
