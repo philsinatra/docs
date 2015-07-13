@@ -282,7 +282,7 @@ First things first: You need to get the references for header.php, footer.php, a
 
 You’ll remember that these three tags will include the contents from header.php, footer.php, and sidebar.php.
 
-Next up is getting `index.php` ready for actually displaying content. To do that, you need “[The Loop](Basic-Loop..markdown).” You’ll use the dummy content as a basis for how the actual output should look. Add the loop, clean out the dummy content, and see how it looks:
+Next up is getting `index.php` ready for actually displaying content. To do that, you need “[The Loop](the-loop.md).” You’ll use the dummy content as a basis for how the actual output should look. Add the loop, clean out the dummy content, and see how it looks:
 
 ```php
 <section id="content-container">
