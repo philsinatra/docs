@@ -38,12 +38,12 @@ To format the remote portion:
 
 *Note: to copy whole directories use the [-r] flag*
 
-## symbolic link
+## Symbolic Link
 ```bash
 $ ln -s <path_to_file_that_should_be_linked> .
 ```
 
-symbolic link to all files in a folder (OSX)
+Symbolic link to all files in a folder (OSX)
 ```bash
 $ ln -s <path_to_file_that_should_be_linked/*> .
 ```
@@ -165,7 +165,23 @@ $ ssh -o "PubkeyAuthentication no" user@server
 $ sftp -o "PubkeyAuthentication no" user@server
 ```
 
-Some helpful ftp commands:
+## Get User Input
+```bash
+echo "Type something and then hit [ENTER]"
+read userinput
+```
+
+## Does directory exist?
+```bash
+if [ -d "$dir" ]
+then
+  echo "$dir directory already exists!"
+else
+  echo "$dir directory not found!"
+fi
+```
+
+## Some helpful ftp commands:
 
 - pwd:    print working directory of remote host
 - lpwd:   print working directory of local host
