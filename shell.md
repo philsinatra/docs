@@ -1,5 +1,3 @@
-# Terminal Goodies
-
 ## Find
 ```bash
 $ find path_to_search . type -f -name "*text_to_find*"
