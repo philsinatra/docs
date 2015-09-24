@@ -18,6 +18,12 @@ It might come together like this:
 $ find /path/to/uploads -maxdepth 1 -type f -not -name 't_*'
 ```
 
+### Simple Recursive Find
+
+```bash
+$ find . -name "*.jpg"
+```
+
 ## CURL
 ```bash
 $ curl http://pathtofile.xml -o ~/Desktop/output_filename.xml
