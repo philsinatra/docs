@@ -149,7 +149,7 @@ $ find . -type f -newermt 2011-06-06 ! -newermt 2011-06-07 | sort > ~/Desktop/li
 
 ## Outgoing IP address
 ```bash
-$ % curl ifconfig.me/all/json
+$ curl ifconfig.me
 ```
 
 ## Network Commands
