@@ -105,6 +105,18 @@ $ cd /destination of copy/
 $ cp -R /directory_files to copy .
 ```
 
+### Copy With Preservation
+```bash
+$ cp -rp /source /destination
+#
+# cp manpage details
+-p    same as --preserve=mode,ownership,timestamps
+
+--preserve[=ATTR_LIST]
+        preserve the specified attributes (default: mode,ownership,timestamps),
+        if possible additional attributes: context, links, xattr, all
+```
+
 ## Batch Rename
 ```bash
 $ for file in *.zipd; do mv "$file" "${file%zipd}zip"; done
