@@ -567,6 +567,16 @@ Don’t want to use less to view your commits? This option will just give you th
 $ git --no-pager log
 ```
 
+Show all of the details of the commits
+```bash
+$ git log -p
+```
+
+Show only a specific subdirectory log
+```bash
+$ git log -p -- path/to/directory > outputFile.txt
+```
+
 Use the gitk command to review the history of a specific document using the Wish comparison application:
 ```bash
 $ gitk [filename]
