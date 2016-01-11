@@ -32,19 +32,23 @@ Sample markup so far:
 
 ## ITCSS - Organizing style sheet elements
 
+Default layers:
+
 <dl>
-    <dt>Global definitions</dt>
-    <dd>@includes, external _admin_ links</dd>
-    <dt>Global styles</dt>
-    <dd>* {}, body {}</dd>
-    <dt>Common elements</dt>
-    <dd>All the paragraphs in this site, all the links etc.</dd>
-    <dt>Reusable patterns</dt>
-    <dd>.teaser {}, .teaser--latest {}, .teaser__title{}</dd>
-    <dt>Unique elements</dt>
-    <dd>Arguably reusable patterns, these are unique in the sense that they only appear once on any given page. (.logo {}, .nav {})</dd>
+    <dt>Settings</dt>
+    <dd>Global variables, config switches</dd>
+    <dt>Tools</dt>
+    <dd>Default mixins and functions</dd>
+    <dt>Generic</dt>
+    <dd>Ground-zero styles [Normalize.css, resets, box-sizing]</dd>
+    <dt>Base</dt>
+    <dd>Unclassed HTML elements [type selectors]</dd>
+    <dt>Objects</dt>
+    <dd>Cosmetic-free design patterns</dd>
+    <dt>Components</dt>
+    <dd>Designed components, chunks of UI</dd>
     <dt>Trumps</dt>
-    <dd><b>!important</b></dd>
+    <dd>Helpers and overrides</dd>
 </dl>
 
 The idea is to ask "What's the scope of the element I'm styling?" If it's an element that appears everywhere on the site, like a paragraph, it should be somewhere towards the top of the style sheet. If I'm styling a pattern that only appears on one page, like the _teaser_ example, it'll be towards the bottom.
