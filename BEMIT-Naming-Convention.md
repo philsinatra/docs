@@ -53,6 +53,8 @@ Default layers:
 
 The idea is to ask "What's the scope of the element I'm styling?" If it's an element that appears everywhere on the site, like a paragraph, it should be somewhere towards the top of the style sheet. If I'm styling a pattern that only appears on one page, like the _teaser_ example, it'll be towards the bottom.
 
+[![inverted triangle](http://media.creativebloq.futurecdn.net/sites/creativebloq.com/files/images/2015/10/itcssmain.jpg)](https://www.youtube.com/watch?v=1OKZOV-iLj4&feature=youtu.be "Harry Roberts - Managing CSS Projects with ITCSS")
+
 ## BEMIT
 
 ### Namespace prefixes
@@ -146,6 +148,10 @@ Organizing styles into media queries should eliminate the need for this level of
 - Some blocks are different to others of the same type, so they have a _modifier_. They are marked up with the suffix --modifier-name.
 
 ### ITCSS
+
+Write CSS based on specificity in the least wasteful order as possible.
+
+### BEMIT
 
 - We can give other developers an idea of the scope of an element using namespace prefixes, suck as o- for _objects_ that appear throughout the site (handle with care), and c- for _component_ that probably  only appear once.
 - We can also add an @ suffix for elements that need particular responsive treatment, such as @sm for small screen sizes, or @print.
