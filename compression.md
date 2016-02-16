@@ -59,3 +59,15 @@ This will create a unique zip for each folder in your current directory.
 ```shell
 $ for i in */; do zip -r "${i%/}.zip" "$i"; done
 ```
+
+# Tar
+
+To open a _tar_ file in Linux or Unix:
+
+```shell
+$ cd location_of_tar_file
+# extract to current directory
+$ tar -xvf yourfile.tar
+# extract to different directory
+$ tar -C /myfolder -xvf yourfile.tar
+```
