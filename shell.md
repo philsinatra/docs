@@ -1,29 +1,3 @@
-## Find
-```bash
-$ find path_to_search . type -f -name "*text_to_find*"
-# find and copy
-$ find path_to_search . type -f -name "*text_to_find*" -exec cp "{}" destination_path \;
-```
-
-### Details
-
-Use `-maxdepth` to only return the current directory, not recursivly search inside subfolders
-
-Use `-type f` to only return files and not directories or device nodes or whatever else
-
-Use a combination if `-not` and `-name` to avoid the files with names you don't want
-
-It might come together like this:
-```bash
-$ find /path/to/uploads -maxdepth 1 -type f -not -name 't_*'
-```
-
-### Simple Recursive Find
-
-```bash
-$ find . -name "*.jpg"
-```
-
 ## CURL
 ```bash
 $ curl http://pathtofile.xml -o ~/Desktop/output_filename.xml
@@ -62,27 +36,6 @@ $ cp -a path/filename
 [http://hints.macworld.com/article.php?story=2004012218171997](http://hints.macworld.com/article.php?story=2004012218171997)
 ```bash
 $ open -a "Adobe Photoshop 7.0" foo.jpg
-```
-
-## File Permissions and Ownership
-```bash
-$ chown root filename
-$ chgrp root filename
-$ chmod 777 filename
-# change user:group in one line
-$ chown user:group filename
-```
-
-## Change permissions to all sub files
-```bash
-# goto content area
-$ cd /var/www/vhosts/xxxxx.com/
-# change to owned by nobody user:group
-$ chown -R nobody:nobody .
-# correct permissions all files at current directory and below
-$ find . -type f -exec chmod 664 {} \;
-# correct permissions all directories at current directory and below
-$ find . -type d -exec chmod 775 {} \;
 ```
 
 ## Directory compare and txt list output
