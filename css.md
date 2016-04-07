@@ -1,3 +1,36 @@
+# CSS
+
+## Globals
+
+```css
+body {
+    /* Set the default for kerning */
+    font-kerning: normal;
+    font-smoothing: antialiased;
+    /* Improve (or in some cases royally screw with) safari's legibility somewhat */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Improve kerning pairs. Webkit gets funny with this sometimes */
+    text-rendering: optimizeLegibility;
+    -ms-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    -webkit-touch-callout: none;
+
+    -webkit-overflow-scrolling: touch;
+
+    /* In case anyone's searching for this later on, a nice trick to get rid of
+    those jagged edges on CSS transformations in Chrome is to add the CSS 
+    property -webkit-backface-visibility with a value of hidden.
+    http://stackoverflow.com/questions/6492027/css-transform-jagged-edges-in-chrome
+    */
+
+    -webkit-backface-visibility: hidden;
+}
+
+```
+
+
+
 # CSS Naming Conventions
 
 ## BEM (Block Element Modifier)
