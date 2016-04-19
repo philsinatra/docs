@@ -98,3 +98,8 @@ else
   menu.classList.add('is-active');
 ```
 
+## Custom Popups
+
+```html
+<a href="http://google.com" onclick="window.open(this.href, '', 'resizable=yes,status=no,location=no,toolbar=no,menubar=no,fullscreen=yes,scrollbars=yes,dependent=no'); return false;">Click here</a>.
+```
