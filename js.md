@@ -103,3 +103,49 @@ else
 ```html
 <a href="http://google.com" onclick="window.open(this.href, '', 'resizable=yes,status=no,location=no,toolbar=no,menubar=no,fullscreen=yes,scrollbars=yes,dependent=no'); return false;">Click here</a>.
 ```
+
+Build this out into a function:
+
+```html
+<p><a href="http://google.com" class="myclass">Google</a></p>
+```
+
+### Javascript `eventListener` by `class`, no jQuery
+
+Loop through all the instances of a class, similar to jQuery `$('.btn').click(...`
+
+```javascript
+var classname = document.getElementsByClassName('myclass');
+
+var myFunction = function(event) {
+  event.preventDefault();
+  var w = window.open(this.href, '', 'resizable=yes,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=yes,dependent=no');
+  w.focus();
+  return false;
+}
+
+for (var i = 0; i < classname.length; i++) {
+  classname[i].addEventListener('click', myFunction, false);
+}
+```
+
+[Stack Overflow](http://stackoverflow.com/questions/19655189/javascript-click-event-listener-on-class)
+
+On the child window, use `resizeTo` and `moveTo` commands to manipulate the position and size of the window:
+
+```javascript
+  var resizeWindow = function() {
+    var width = 1024;
+    var height = 768;
+
+    var left = parseInt((screen.availWidth/2) - (width/2));
+    var top = parseInt((screen.availHeight/2) - (height/2));
+
+    window.resizeTo(width, height);
+    window.moveTo(left, top);
+  }
+
+  resizeWindow();
+```
+
+[Stack Overflow](http://stackoverflow.com/questions/6561066/after-i-launch-a-popup-window-how-do-i-move-it-to-the-center-of-the-page)
