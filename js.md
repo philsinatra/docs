@@ -149,3 +149,61 @@ On the child window, use `resizeTo` and `moveTo` commands to manipulate the posi
 ```
 
 [Stack Overflow](http://stackoverflow.com/questions/6561066/after-i-launch-a-popup-window-how-do-i-move-it-to-the-center-of-the-page)
+
+## JavaScript and prototype-based OOP
+
+[A List Apart Article](http://alistapart.com/article/prototypal-object-oriented-programming-using-javascript)
+
+Following is an example that demonstrates this kind of OOP in JavaScript. We start by creating an animal object:
+
+```javascript
+var genericAnimal = Object.create(null);
+```
+
+`Object.create(null)` creates a new empty object. Next, we add some properties and functions to our new object:
+
+```javascript
+genericAnimal.name = 'Animal';
+genericAnimal.gender = 'female';
+genericAnimal.description = function() {
+  return 'Gender: ' + this.gender + '; Name: ' + this.name;
+};
+```
+
+`genericAnimal` is a proper object and can be used like one:
+
+```javascript
+console.log(genericAnimal.description());
+//Gender: female; Name: Animal
+```
+
+We can create other, more specific animals by using our sample object as a prototype. Think of this as cloning the object, just like we took a chair and created a clone in the real world.
+
+```javascript
+var cat = Object.create(genericAnimal);
+```
+
+We just created a cat as a clone of the generic animal. We can add properties and functions to this:
+
+```javascript
+cat.purr = function() {
+  return 'Purrrr!';
+};
+```
+
+We can use our cat as a prototype and create a few more cats:
+
+```javascript
+var colonel = Object.create(cat);
+colonel.name = 'Colonel Meow';
+
+var puff = Object.create(cat);
+puff.name = 'Puffy';
+```
+
+You can also observe that properties/methods from parents were properly carried over:
+
+```javascript
+console.log(puff.description());
+//Gender: female; Name: Puffy
+```
