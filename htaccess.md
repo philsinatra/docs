@@ -1,6 +1,8 @@
+# htaccess
+
 ## Authentication
 
-```
+```apache
 <IfModule mod_authn_file.c>
       AuthName "Username and password required"
       AuthType Basic
@@ -15,7 +17,7 @@
 
 To add a user to an existing .htpasswd file, use the `htpasswd` command without the `-c` parameter:
 
-```
+```apache
 htpasswd .htpasswd membertwo
 New password:
 Re-type new password:
@@ -24,13 +26,13 @@ Adding password for user membertwo
 
 Adjust the `require` line of the `.htaccess` file to account for the new user:
 
-```
+```apache
 Require user originaluser membertwo
 ```
 
 ## Mime Type Support
 
-```
+```apache
 AddType image/svg+xml .svg
 AddType video/ogg .ogv .ogg
 AddType video/webm .webm
@@ -38,3 +40,40 @@ AddType video/x-m4v .m4v
 AddType video/mp4 .mp4
 AddType application/json .json
 ```
+
+## GZIP Compression
+
+```apache
+# BEGIN GZIP
+<ifmodule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript
+</ifmodule>
+# END GZIP
+```
+
+- [source article](https://css-tricks.com/snippets/htaccess/active-gzip-compression/)
+- [test utility](http://www.whatsmyip.org/http-compression-test/)
+
+## Leverage Browser Caching
+
+```apache
+## EXPIRES CACHING ##
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/pdf "access plus 1 month"
+  ExpiresByType text/x-javascript "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType application/x-javascript "access plus 1 month"
+  ExpiresByType application/x-shockwave-flash "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresDefault "access plus 2 days"
+</IfModule>
+## EXPIRES CACHING ##
+```
+
