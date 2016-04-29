@@ -207,3 +207,18 @@ You can also observe that properties/methods from parents were properly carried 
 console.log(puff.description());
 //Gender: female; Name: Puffy
 ```
+
+## Get URL Parameter
+
+```javascript
+var getURLParameter = function(name) {
+  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+  var regexS = "[\\?&]"+name+"=([^&#]*)";
+  var regex = new RegExp(regexS);
+  var results = regex.exec(window.location.href);
+  if(results==null)
+    return '';
+  else
+    return results[1];
+}
+```
