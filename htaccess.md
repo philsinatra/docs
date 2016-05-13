@@ -32,6 +32,30 @@ Require user originaluser membertwo
 
 ## Mime Type Support
 
+Some common MIME Types:
+
+| File Type | MIME Type | Web Control Usage |
+|----------|--------|----------|
+| .vtt | text/vtt | Video Player Web Control |
+| .srt | text/srt | Video Player Web Control |
+| .xml | text/xml | Video Player Web Control |
+| .aac | audio/aac | Audio Player Web Control |
+| .oga | audio/ogg | Audio Player Web Control |
+| .mp3 | audio/mpeg | Audio Player Web Control |
+| .mp4 | video/mp4 | Video Player Web Control |
+| .m4v | video/x-m4v | Video Player Web Control |
+| .webm | video/webm | Video Player Web Control |
+| .ogv | video/ogg | Video Player Web Control |
+| .flv | video/x-flv | Video Player Web Control |
+| .mov | video/quicktime | Quicktime Movie Web Control |
+| .m4v | video/x-f4v | Video Player Web Control |
+| .m4a | video/mp4 | Audio Player Web Control |
+| .svg | image/svg+xml | SVG Graphics |
+| .json | application/json | JSON Data |
+| .ttml | application/ttml+xml | Video Player Web Control |
+
+Example configuration:
+
 ```apache
 AddType image/svg+xml .svg
 AddType video/ogg .ogv .ogg
