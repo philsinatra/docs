@@ -222,3 +222,28 @@ var getURLParameter = function(name) {
     return results[1];
 }
 ```
+
+## iOS Scroll/Resize Bug
+
+To fix the `resize` event firing on iOS scroll bug:
+
+```javascript
+// Store the window width
+var window_width = window.innerWidth;
+
+resizeWindow = function(event) {
+  var w = window.innerWidth;
+
+  if (w !== window_width) {
+    // Store new width for next resize event.
+    window_width = w;
+
+    // Do stuff.
+  }
+  // Otherwise do nothing.
+};
+
+window.addEventListener('resize', resizeWindow, false);
+```
+
+- [stackoverflow](http://stackoverflow.com/questions/8898412/iphone-ipad-triggering-unexpected-resize-events/24212316#24212316)
