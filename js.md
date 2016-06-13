@@ -247,3 +247,28 @@ window.addEventListener('resize', resizeWindow, false);
 ```
 
 - [stackoverflow](http://stackoverflow.com/questions/8898412/iphone-ipad-triggering-unexpected-resize-events/24212316#24212316)
+
+## Form Validation
+
+### Phone Numbers
+
+- [reference](http://webcheatsheet.com/javascript/form_validation.php#phone)
+
+```javascript
+var phone = $('input#phone').val();
+var phone_stripped = phone.replace(/[\(\)\.\-\ ]/g, '');
+if (phone === '') {
+  $('label#phone_error').html('This field is required.').show();
+  $('input#phone').focus();
+  return false;
+} else if (isNaN(parseInt(phone_stripped))) {
+  $('label#phone_error').html('The number provided contains illegal characters.').show();
+  $('input#phone').focus();
+  return false;
+} else if (phone_stripped.length !== 10) {
+  $('label#phone_error').html('The phone number is the wrong length. There should be 10 numbers.').show();
+  $('input#phone').focus();
+  return false;
+}
+else $('label#phone_error').hide();
+```
