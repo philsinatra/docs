@@ -87,6 +87,31 @@ var myApplication = function(){
 //myApplication.get() and myApplication.create() now work.
 ```
 
+## Declarative Programming
+
+```javascript
+// declarative
+const square = a => a * a
+const add = (a, b) => a + b
+const sum = reduce(add, 0)
+
+// these functions work on their own
+square(2) // 4
+map(square, [1, 2, 3]) // [1, 4, 9]
+add(1, 3) // 4
+sum([1, 2, 3]) // 6
+
+// and they work together
+const sumOfSquares = pipe(
+  map(square),
+  sum,
+)
+
+sumOfSquares([1, 2, 3, 4, 5]) // 55
+```
+
+- [reference](http://www.jon.gold/2016/06/declarative-design-tools/)
+
 ## Class Lists
 
 ```javascript
