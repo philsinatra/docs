@@ -163,3 +163,22 @@ fi
 - get:    receive file from remote host to local client
 - put:    send file from local client to remote host
 - help:   display help text
+
+
+## Reformat Text As A Long List of Words
+
+```bash
+tr [:cntrl:] " " <filename | tr -s " " >new.filename
+```
+
+- [http://www.linuxforums.org/forum/ubuntu-linux/153458-scipt-add-carriage-return-text-after-number-words.html](http://www.linuxforums.org/forum/ubuntu-linux/153458-scipt-add-carriage-return-text-after-number-words.html)
+
+## Insert a new line every ten words
+
+```bash
+xargs -n10 < file
+# output to a new file
+xargs -n10 < new.file
+```
+
+- [http://stackoverflow.com/questions/15979802/how-to-insert-a-newline-n-after-x-numbers-of-words-with-awk-or-sed](http://stackoverflow.com/questions/15979802/how-to-insert-a-newline-n-after-x-numbers-of-words-with-awk-or-sed)
