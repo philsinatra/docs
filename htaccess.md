@@ -101,3 +101,45 @@ AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css a
 ## EXPIRES CACHING ##
 ```
 
+## Remove www
+```apache
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+        RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+        RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+</IfModule>
+```
+
+# Enable symbolic links
+
+```apache
+Options +FollowSymLinks
+```
+
+# Disable index views
+
+```apache
+Options All -Indexes
+```
+
+# Specify the default language
+
+```apache
+DefaultLanguage en
+```
+
+# Specify the default character set
+
+```apache
+AddDefaultCharset utf-8
+```
+
+# BEGIN GZIP
+
+```apache
+<ifmodule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript
+</ifmodule>
+# END GZIP
+```
+
