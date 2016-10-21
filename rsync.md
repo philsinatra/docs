@@ -3,7 +3,14 @@
 ## Basic Syntax
 ```bash
 # rsync options source destination
-$ rsync -va --delete ~/Folder1/ ~/Folder2/
+$ rsync -va --delete ~/Folder1/ ~/Folder2
+
+# example: sync the contents of `source_folder` into destination folder
+$ rsync -va source_folder/ destination_folder
+# Note the / on the end of the source folder. 
+# That will ensure the contents of the folder are synced.
+# Without the slash, the actual folder itself will be synced,
+# which would put a copy of source_folder into destination_folder.
 ```
 
 ## Common Options
