@@ -15,6 +15,14 @@ npm install -g yarn
 yarn init
 ```
 
+## Install Dependencies
+
+```bash
+yarn
+# or
+yarn install
+```
+
 ## Add | Upgrade | Removed Dependencies
 
 ```bash
@@ -54,5 +62,6 @@ yarn self-update
 ## Resources
 
 - [Homepage](https://yarnpkg.com)
+- [Docs](https://yarnpkg.com/en/docs/)
 - [Facebook Intro](https://code.facebook.com/posts/1840075619545360)
 - [Scotch.io](https://scotch.io/tutorials/yarn-package-manager-an-improvement-over-npm)
