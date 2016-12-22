@@ -1,3 +1,11 @@
+## Make Directory
+
+```bash
+mkdir directory_name
+# -p flag will make directory if it does not already exist
+mkdir -p directory_name
+```
+
 ## CURL
 ```bash
 $ curl http://pathtofile.xml -o ~/Desktop/output_filename.xml
@@ -25,6 +33,21 @@ Symbolic link to all files in a folder (OSX)
 ```bash
 $ ln -s <path_to_file_that_should_be_linked/*> .
 ```
+
+To check if a symbolic link exists before creating:
+
+```bash
+cdn=../cdn
+path=../build
+files=( "docs" "fonts" "media" "ui")
+
+for i in "${files[@]}"
+  do
+    if [[ -h "$path/$i" ]]; then echo "{$i} link exists"; else ln -s "$cdn/$i" "$path/$i"; fi
+done
+```
+
+This will loop through the defined `path` and check each of the items in the `files` array to see if they exist as a symbolic link. If they do not exist, the script will create the symlinks.
 
 ## File copy maintaining Date/Owner info
 ```bash
@@ -182,3 +205,41 @@ xargs -n10 < new.file
 ```
 
 - [http://stackoverflow.com/questions/15979802/how-to-insert-a-newline-n-after-x-numbers-of-words-with-awk-or-sed](http://stackoverflow.com/questions/15979802/how-to-insert-a-newline-n-after-x-numbers-of-words-with-awk-or-sed)
+
+## Package Assets
+
+```bash
+#!/bin/bash
+cd ${0%/*}
+
+# Package `build` contents for delivery.
+read -r -p "Package for delivery? (did you --production flag everything?) [Y/n] " response
+case $response in
+    [yY][eE][sS]|[yY])
+        echo 'Copying files...'
+        cp -r ../build ~/Desktop/.
+        cd ~/Desktop/
+        mv build package_name
+        echo 'Done.'
+
+        echo 'Zipping files...'
+        zip -r9X package_name.zip package_name
+        echo 'Done.'
+
+        read -r -p "Delete prep directory? This will leave the .zip file but remove the temporary source. [Y/n] " response
+        case $response in
+          [yY][eE][sS]|[yY])
+            echo 'Cleaning up...'
+            rm -r package_name
+            ;;
+        esac
+
+        cd -
+        echo 'Packaging complete.'
+        open ~/Desktop/
+        ;;
+    *)
+        # do_something_else
+        ;;
+esac
+```

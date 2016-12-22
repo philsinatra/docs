@@ -7,7 +7,7 @@ $ rsync -va --delete ~/Folder1/ ~/Folder2
 
 # example: sync the contents of `source_folder` into destination folder
 $ rsync -va source_folder/ destination_folder
-# Note the / on the end of the source folder. 
+# Note the / on the end of the source folder.
 # That will ensure the contents of the folder are synced.
 # Without the slash, the actual folder itself will be synced,
 # which would put a copy of source_folder into destination_folder.
@@ -289,4 +289,38 @@ destination/dir3
 Perform rsync without effecting group:
 ```bash
 rsync -va --no-g source destination
+```
+
+## `rsync` From Remote Server
+
+```bash
+#!/bin/bash
+cd ${0%/*}
+
+# Make `build` directory if it doesn't already exist
+mkdir -p ./build
+
+echo "Pull cdn assets"
+
+# Create `cdn` directory if needed
+mkdir -p ./cdn
+mkdir -p ./cdn/docs ./cdn/fonts ./cdn/media ./cdn/ui
+
+test=
+verbose=v
+delete=
+
+host=servername.com
+rsource=username@$host://var/www/path/source/content
+
+# rsync pull from cdn
+dir=docs
+dest=./cdn/docs
+
+echo "rsync from $rsource/$dir"
+echo "        to $dest"
+
+rsync -razO$verbose --exclude .DS_Store --exclude .git $delete $test "$rsource/$dir/" "$dest/"
+
+# repeat for each `cdn` source
 ```
