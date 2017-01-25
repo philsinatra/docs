@@ -17,3 +17,12 @@ A great resource with additional shell enhancements and functions: [https://gith
 ## SVG
 
 - [SVG Patterns](http://www.heropatterns.com/?mc_cid=a2f92af018&mc_eid=aad7905fc1)
+
+## Video Placeholder
+
+```html
+<video preload controls poster="https://cdn.brad.is/images/thumb.jpg">
+    <source src="https://cdn.brad.is/videos/curiosity.mp4" type="video/mp4">
+    <source src="https://cdn.brad.is/videos/curiosity.webm" type="video/webm">
+</video>
+```
