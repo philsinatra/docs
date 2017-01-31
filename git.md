@@ -451,6 +451,12 @@ $ git show HEAD~4:index.html
 
 You could of course pass any valid treeish into the command. It will accept the actual SHA1 of the blob as well.
 
+```bash
+$ git show 7da184bbb00c094e08df8714604fa273e51cf4fa:./src/pages/filename.html
+# save the output to a file
+$ git show 7da184bbb00c094e08df8714604fa273e51cf4fa:./src/pages/filename.html ~/Desktop/myfile.html
+```
+
 <a name="conflicts"></a>
 ## Conflicts
 
