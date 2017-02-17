@@ -306,6 +306,7 @@ btn_captions.addEventListener('click', toggleCaptions, false);
 
 ### Software
 
+- **[Online Captioning Tool](http://www.subtitle-horse.com)**
 - [Microsoft Caption Maker Demo](https://developer.microsoft.com/en-us/microsoft-edge/testdrive/demos/captionmaker/)
 
 ### TTML
