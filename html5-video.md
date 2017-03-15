@@ -54,11 +54,11 @@ For older browsers, it has custom Flash and Silverlight plugins
 that fully replicate the HTML5 MediaElement API
 ```
 
-In this example, the _line/position_ attributes are applied to each of the track captions to position the text in the center of the screen horizontally and 90% from the top, which will leave room at the bottom of the video (for a fixed nav bar?). 
+In this example, the _line/position_ attributes are applied to each of the track captions to position the text in the center of the screen horizontally and 90% from the top, which will leave room at the bottom of the video (for a fixed nav bar?).
 
-- **webvtt** `.vtt` format captions work on both Windows and OSX. 
-- There is minimal styling available on non `-webkit` browsers. 
-  - OSX browsers by default position white text on a semi-transparent black background. 
+- **webvtt** `.vtt` format captions work on both Windows and OSX.
+- There is minimal styling available on non `-webkit` browsers.
+  - OSX browsers by default position white text on a semi-transparent black background.
   - <span style="color:red">IE11 positions white text with a thin black border on a totally transparent background.</span>
 - There is sufficient positioning capabilities built into the `.vtt` file
 
@@ -144,9 +144,9 @@ if ((old_ie > -1) || (new_ie > -1)) {
 var track_source = document.createElement('track');
 track_source.setAttribute('label', 'English Captions');
 
-if (ms_ie) 
+if (ms_ie)
   track_source.setAttribute('src', 'SDPTest.ttml');
-else 
+else
   track_source.setAttribute('src', 'video_cc_en.vtt');
 
 track_source.setAttribute('default', 'default');
@@ -296,7 +296,7 @@ btn_captions.addEventListener('click', toggleCaptions, false);
 ## Additional Notes
 
 - For captions to work, files must be served from a web server. Running the page locally will not allow caption functionality.
-- Web server must include MIME support: 
+- Web server must include MIME support:
   ```apache
   AddType text/vtt .vtt
   AddType application/ttml+xml .ttml
@@ -366,3 +366,38 @@ function detect_autoplay(acceptable_delay) {
 ```
 
 - [reference](http://stackoverflow.com/questions/7120703/how-do-i-detect-if-the-html5-autoplay-attribute-is-supported)
+
+
+## Dynamically Add Video Content
+
+```javascript
+var video = document.createElement('video');
+video.src = 'path_to_media.mp4';
+video.id = 'video';
+video.controls = true;
+video.preload = true;
+video.autoplay = false;
+video.poster = 'path_to_media.jpg';
+
+video.addEventListener('loadedmetadata', function() {
+	var track = document.createElement('track');
+	track.kind = 'captions';
+	track.label = 'English Captions';
+	track.srclang = 'en';
+	track.src = 'path_to_file.vtt';
+
+	// New track's default mode is "hidden".
+	track.addEventListener('load', function() {
+		this.mode = 'showing';
+		video.textTracks[0].mode = 'showing';
+	});
+
+	this.appendChild(track);
+});
+
+var video_container = document.querySelector('.video_container');
+video_container.appendChild(video);
+```
+
+- [reference](https://www.iandevlin.com/blog/2015/02/javascript/dynamically-adding-text-tracks-to-html5-video)
+- [document](http://cdn.philsinatra.com/docs/html5-video-tracks.pdf)
