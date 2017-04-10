@@ -301,3 +301,55 @@ else $('label#phone_error').hide();
 ## RegExp
 
 - [https://regex101.com](https://regex101.com)
+
+## Keyboard Event Listeners
+
+For dealing with a single key down:
+
+```javascript
+document.addEventListener('keydown', function(e) {
+  e = e || event;
+  switch (e.which) {
+    case 37:
+      // left arrow
+      if (prev_page)
+        document.location = prev_page;
+      break;
+    case 39:
+      // right arrow
+      if (next_page)
+        document.location = next_page;
+      break;
+  }
+});
+```
+
+For dealing with multiple keys down at the same time:
+
+```javascript
+// 16: SHIFT
+// 37: LEFT ARROW,
+// 39: RIGHT ARROW
+var map = {
+  16: false,
+  37: false,
+  39: false
+};
+
+document.addEventListener('keydown', function(e) {
+  e = e || event;
+  map[e.keyCode] = e.type == 'keydown' ? true : false;
+  if (map[16] && map[37]) {
+    console.log('previous');
+  }
+  if (map[16] && map[39]) {
+    console.log('next');
+  }
+});
+
+document.addEventListener('keyup', function(e) {
+  e = e || event;
+  map[e.keyCode] = false;
+  console.log(map);
+});
+```
