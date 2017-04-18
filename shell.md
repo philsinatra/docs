@@ -1,3 +1,9 @@
+# Bash/Shell Scripting
+
+## Arrays
+
+- [http://www.thegeekstuff.com/2010/06/bash-array-tutorial](http://www.thegeekstuff.com/2010/06/bash-array-tutorial)
+
 ## Make Directory
 
 ```bash
