@@ -65,10 +65,22 @@ $ for i in */; do zip -r "${i%/}.zip" "$i"; done
 
 To open a _tar_ file in Linux or Unix:
 
-```shell
+```bash
 $ cd location_of_tar_file
 # extract to current directory
 $ tar -xvf yourfile.tar
 # extract to different directory
 $ tar -C /myfolder -xvf yourfile.tar
 ```
+
+To create a _tar_ file:
+
+```bash
+tar -cvzf tarballname.tar.gz itemtocompress
+```
+
+For example, to compress a directories jpg files only, you’d type:
+
+```bash
+tar -cvzf jpegarchive.tar.gz /path/to/images/*.jpg
+```bash
