@@ -28,6 +28,64 @@ The example uses Javascript to dynamically change the fill color of the three li
 })();
 ```
 
+## Change Icon With Javascript
+
+Define the svg:
+
+```html
+<svg style="display: none">
+    <symbol id="icon_info" viewBox="0 0 20 20">
+      <g fill="none" fill-rule="evenodd" transform="translate(-2 -2)">
+        <path id="icon_info_icon" fill="#558abb" fill-rule="nonzero" d="M12,2 C6.48,2 2,6.48 2,12 C2,17.52 6.48,22 12,22 C17.52,22 22,17.52 22,12 C22,6.48 17.52,2 12,2 Z M13,17 L11,17 L11,11 L13,11 L13,17 Z M13,9 L11,9 L11,7 L13,7 L13,9 Z"/>
+        <polygon points="0 0 24 0 24 24 0 24"/>
+      </g>
+    </symbol>
+    <symbol id="icon_close" viewbox="0 0 20 20">
+      <g fill="none" fill-rule="evenodd" transform="translate(-2 -2)">
+        <path id="icon_close_icon" fill="#558abb" fill-rule="nonzero" d="M12,2 C6.47,2 2,6.47 2,12 C2,17.53 6.47,22 12,22 C17.53,22 22,17.53 22,12 C22,6.47 17.53,2 12,2 Z M17,15.59 L15.59,17 L12,13.41 L8.41,17 L7,15.59 L10.59,12 L7,8.41 L8.41,7 L12,10.59 L15.59,7 L17,8.41 L13.41,12 L17,15.59 Z"/>
+        <polygon points="0 0 24 0 24 24 0 24"/>
+      </g>
+    </symbol>
+  </svg>
+  ```
+
+  Build the anchor:
+
+  ```html
+  <a href="#" class="btn_toggle"><svg><use xlink:href="#icon_info"></use></svg></a>
+  ```
+
+  Toggle the icons onclick:
+
+  ```javascript
+  (function() {
+  var info_buttons = document.querySelectorAll('.btn_toggle');
+
+  function toggleIcon() {
+    var use_icon = this.querySelector('svg > use');
+    var use_icon_xlink = use_icon.getAttribute('xlink:href');
+
+    use_icon.setAttribute('xlink:href', '#icon_close');
+    // use_icon.setAttribute('xlink:href', '#icon_info');
+  }
+
+  for (var i = 0; i < info_buttons.length; i++) {
+    info_buttons[i].addEventListener('click', toggleInfo, false);
+  }
+})();
+```
+
+🐛 **IE Bug**
+
+Switching the `xlink:href` value dynamically will cause IE to freeze. Implement this rule in the stylesheet to fix the  bug.
+
+```css
+svg use {
+  pointer-events: none;
+}
+```
+
+
 ## Common SVG Icons
 
 ```svg
