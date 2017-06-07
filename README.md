@@ -26,3 +26,15 @@ A great resource with additional shell enhancements and functions: [https://gith
     <source src="https://cdn.brad.is/videos/curiosity.webm" type="video/webm">
 </video>
 ```
+
+## Sublime Text
+
+Select every other line:
+
+1. Find: <kbd>Ctrl</kbd>+<kbd>F</kbd>
+1. If regular expressions are not already enabled, enable them: <kbd>Alt</kbd>+<kbd>Command</kbd>+<kbd>R</kbd>
+1. Type in the expression `.*\n.*\n`
+1. Find all: <kbd>Alt</kbd>+<kbd>Enter</kbd>
+1. Press left arrow to get rid of the selections, leaving just the cursors: <kbd>←</kbd>
+1. You now have a cursor at the start of every odd-numbered line. If you wanted even-numbered lines, press down: <kbd>↓</kbd>
+1. Depending on the file, there might be one cursor missing right down the bottom of the file. Using the mouse (damn!) scroll to the bottom, hold down <kbd>Ctrl</kbd>, and click where the missing cursor should be to add it in.
