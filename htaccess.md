@@ -13,7 +13,21 @@
 </IfModule>
 ```
 
-### Users
+## Cross-site Access
+
+    bad URI or cross-site access not allowed
+
+Add the following to the `.htaccess` file on the source server (where the resources are coming from, not where they are loading).
+
+```apache
+<FilesMatch "\.(ttf|otf|eot|woff|woff2)$">
+  <IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+  </IfModule>
+</FilesMatch>
+```
+
+## Users
 
 To add a user to an existing .htpasswd file, use the `htpasswd` command without the `-c` parameter:
 
@@ -102,6 +116,7 @@ AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css a
 ```
 
 ## Remove www
+
 ```apache
 <IfModule mod_rewrite.c>
   RewriteEngine On
@@ -110,31 +125,31 @@ AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css a
 </IfModule>
 ```
 
-# Enable symbolic links
+## Enable symbolic links
 
 ```apache
 Options +FollowSymLinks
 ```
 
-# Disable index views
+## Disable index views
 
 ```apache
 Options All -Indexes
 ```
 
-# Specify the default language
+## Specify the default language
 
 ```apache
 DefaultLanguage en
 ```
 
-# Specify the default character set
+## Specify the default character set
 
 ```apache
 AddDefaultCharset utf-8
 ```
 
-# BEGIN GZIP
+## BEGIN GZIP
 
 ```apache
 <ifmodule mod_deflate.c>
