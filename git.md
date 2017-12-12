@@ -430,6 +430,32 @@ Seeing which local branches are tracking a remote branch
 $ git remote show origin
 ```
 
+### Merging an upstream repository into your fork
+
+1. Open Terminal.
+1. Change the current working directory to your local project.
+1. Check out the branch you wish to merge to. Usually, you will merge into master.
+    ```bash
+    git checkout master
+    ```
+
+1. Pull the desired branch from the upstream repository. This method will retain the commit history without modification.
+    ```bash
+    git pull https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git BRANCH_NAME
+    ```
+
+1. If there are conflicts, resolve them. For more information, see "[Addressing merge conflicts](https://help.github.com/articles/addressing-merge-conflicts/)".
+1. Commit the merge.
+1. Review the changes and ensure they are satisfactory.
+1. Push the merge to your GitHub repository.
+    ```bash
+    git push origin master
+    ```
+
+[GitHub reference](https://help.github.com/articles/merging-an-upstream-repository-into-your-fork/)
+
+
+
 <a name="show"></a>
 ## Show
 
