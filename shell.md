@@ -13,15 +13,17 @@ mkdir -p directory_name
 ```
 
 ## CURL
+
 ```bash
-$ curl http://pathtofile.xml -o ~/Desktop/output_filename.xml
+curl http://pathtofile.xml -o ~/Desktop/output_filename.xml
 ```
 
 ## SCP
 
 The basic format of the command:
+
 ```bash
-$ scp [options] original_file destination_file
+scp [options] original_file destination_file
 ```
 
 To format the remote portion:
@@ -31,13 +33,15 @@ To format the remote portion:
 *Note: to copy whole directories use the [-r] flag*
 
 ## Symbolic Link
+
 ```bash
-$ ln -s <path_to_file_that_should_be_linked> .
+ln -s <path_to_file_that_should_be_linked> .
 ```
 
 Symbolic link to all files in a folder (OSX)
+
 ```bash
-$ ln -s <path_to_file_that_should_be_linked/*> .
+ln -s <path_to_file_that_should_be_linked/*> .
 ```
 
 To check if a symbolic link exists before creating:
@@ -56,38 +60,44 @@ done
 This will loop through the defined `path` and check each of the items in the `files` array to see if they exist as a symbolic link. If they do not exist, the script will create the symlinks.
 
 ## File copy maintaining Date/Owner info
+
 ```bash
-$ cp -a path/filename
+cp -a path/filename
 ```
 
 ## Open files in specific apps
 
 [http://hints.macworld.com/article.php?story=2004012218171997](http://hints.macworld.com/article.php?story=2004012218171997)
+
 ```bash
-$ open -a "Adobe Photoshop 7.0" foo.jpg
+open -a "Adobe Photoshop 7.0" foo.jpg
 ```
 
 ## Directory compare and txt list output
 
-compare directories and export txt list of differences
+Compare directories and export txt list of differences:
+
 ```bash
-$ diff -qr dirA dirB | grep -v -e 'DS_Store' -e 'Thumbs' | sort > diffs.txt
+diff -qr dirA dirB | grep -v -e 'DS_Store' -e 'Thumbs' | sort > diffs.txt
 ```
 
 ## List contents of zipped file
 
 To list contents of zipped file:
+
 ```bash
-$ unzip -l filename.zip
+unzip -l filename.zip
 ```
 
 ## Copy
+
 ```bash
-$ cd /destination of copy/
-$ cp -R /directory_files to copy .
+cd /destination of copy/
+cp -R /directory_files to copy .
 ```
 
 ### Copy With Preservation
+
 ```bash
 $ cp -rp /source /destination
 #
@@ -100,11 +110,13 @@ $ cp -rp /source /destination
 ```
 
 ## Batch Rename
+
 ```bash
-$ for file in *.zipd; do mv "$file" "${file%zipd}zip"; done
+for file in *.zipd; do mv "$file" "${file%zipd}zip"; done
 ```
 
 ## Batch Remove Spaces In File Names
+
 ```bash
 #! /bin/sh
 for n in *
@@ -118,12 +130,14 @@ done
 ```
 
 To run this script, `cd` into the destination directory and then execute. Example:
+
 ```bash
-$ cd directory/my-files/
-$ ~/Documents/./remove-spaces *
+cd directory/my-files/
+~/Documents/./remove-spaces *
 ```
 
 ## Create Executable Shell Script
+
 ```bash
 $ ls
 myscript.sh
@@ -133,17 +147,28 @@ $ chmod 755 myscript
 $ ./myscript
 ```
 
+## Find & Remove Files Based On Wildcard String
+
+_*NEEDLE*_ represents the wildcard string value that is being searched for in the file names.
+
+```bash
+find . -maxdepth 1 -name "*NEEDLE*" -print
+find . -maxdepth 1 -name "*NEEDLE*" -exec rm {} \;
+```
+
 ## Show files by edit date
 
 List files edited in the past day
+
 ```bash
-$ find . -type f -newermt 2011-06-07
-$ find . -type f -newermt 2011-06-06 ! -newermt 2011-06-07 | sort > ~/Desktop/list.txt
+find . -type f -newermt 2011-06-07
+find . -type f -newermt 2011-06-06 ! -newermt 2011-06-07 | sort > ~/Desktop/list.txt
 ```
 
 ## Outgoing IP address
+
 ```bash
-$ curl ifconfig.me
+curl ifconfig.me
 ```
 
 ## Network Commands
@@ -151,25 +176,29 @@ $ curl ifconfig.me
 [http://www.computerhope.com/](http://www.computerhope.com/)
 
 ## Extract files from multiple folders
+
 ```bash
-$ find path/to/extract/from -name *.mp3 -exec cp {} /path/to/destination \;
+find path/to/extract/from -name *.mp3 -exec cp {} /path/to/destination \;
 ```
 
 ## sftp / ssh
 
 To access a remote server without the use of a public key use:
+
 ```bash
-$ ssh -o "PubkeyAuthentication no" user@server
-$ sftp -o "PubkeyAuthentication no" user@server
+ssh -o "PubkeyAuthentication no" user@server
+sftp -o "PubkeyAuthentication no" user@server
 ```
 
 ## Get User Input
+
 ```bash
 echo "Type something and then hit [ENTER]"
 read userinput
 ```
 
 ## Does directory exist?
+
 ```bash
 if [ -d "$dir" ]
 then
