@@ -1,5 +1,36 @@
 # CSS
 
+## Grid Autoprefixer
+
+Here is a table detailing the properties in the spec at CR, the IE10 properties and also whether they are prefixed by Autoprefixer as tested using the [online Autoprefixer tool](https://autoprefixer.github.io).
+
+| CR Level 1 Property | IE10 Implementation | Autoprefixer | Note |
+| ------------------- | ------------------- | ------------ | ---- |
+| `grid-template-columns` | `-ms-grid-columns` | Yes | |
+| `grid-template-rows` | `-ms-grid-rows` | Yes | |
+| `grid-template-areas` | - | No | |
+| `grid-template` | - | No | Shorthand |
+| `grid-auto-columns` | - | No | |
+| `grid-auto-rows` | - | No | |
+| `grid-auto-flow` | - | No | |
+| `grid` | - | No | Shorthand |
+| `grid-row-start` | `-ms-grid-row` Yes | |
+| `grid-column-start` | `-ms-grid-column` | Yes | |
+| `grid-row-end` | - | No | Defined by the `-ms-grid-row-span` property |
+| `grid-column-end` | - | No | Defined by the `-ms-grid-column-span` property |
+| `grid-row` | - | Yes (only for start value) | Shorthand for setting start and end values together |
+| `grid-column` | - | Yes (only for start value) | Shorthand for setting start and end values together |
+| `grid-area` | - | No | |
+| `grid-row-gap` | - | No | Gap properties can be faked by using a regular track |
+| `grid-column-gap` | - | No | |
+| `grid-gap` | - | No | |
+| - | `-ms-grid-column-span` | - | Not required due to changes to spec |
+| - | `-ms-grid-row-span` | - | Not required due to changes to spec |
+| `align-self` | `-ms-grid-column-align` | Yes | Now part of Box Alignment |
+| `justify-self` | `-ms-grid-row-align` | No | Now part of Box Alignment |
+
+- Reference: [Should I try to use the IE implementation of CSS Grid Layout? by Rachel Andrew](https://rachelandrew.co.uk/archives/2016/11/26/should-i-try-to-use-the-ie-implementation-of-css-grid-layout/)
+
 ## Visually Hidden
 
 ```css
@@ -31,7 +62,7 @@ body {
     -webkit-overflow-scrolling: touch;
 
     /* In case anyone's searching for this later on, a nice trick to get rid of
-    those jagged edges on CSS transformations in Chrome is to add the CSS 
+    those jagged edges on CSS transformations in Chrome is to add the CSS
     property -webkit-backface-visibility with a value of hidden.
     http://stackoverflow.com/questions/6492027/css-transform-jagged-edges-in-chrome
     */
@@ -43,13 +74,13 @@ body {
 
 
 
-# CSS Naming Conventions
+## CSS Naming Conventions
 
-## BEM (Block Element Modifier)
+### BEM (Block Element Modifier)
 
 Start by identifying _blocks_ of content, such as "teasers" on the home page.
 
-Within a block, there will be related elements (title, date, description, read more link etc.). BEM model suggests we name these by the containing block name, two underscores and then the element name. Example: 
+Within a block, there will be related elements (title, date, description, read more link etc.). BEM model suggests we name these by the containing block name, two underscores and then the element name. Example:
 
 ```css
 .teaser__title {}
@@ -58,7 +89,7 @@ Within a block, there will be related elements (title, date, description, read m
 .teaser__read-more {}
 ```
 
-There may be a situation where a teaser needs special styling (a different background color, font-style etc.) BEM dictates we use a _modifier_, which is referred to by the block name, two hyphens and then the modifier name: 
+There may be a situation where a teaser needs special styling (a different background color, font-style etc.) BEM dictates we use a _modifier_, which is referred to by the block name, two hyphens and then the modifier name:
 
 ```css
 .teaser--latest {}
@@ -75,7 +106,7 @@ Sample markup so far:
 </div>
 ```
 
-## ITCSS - Organizing style sheet elements
+### ITCSS - Organizing style sheet elements
 
 Default layers:
 
@@ -100,9 +131,9 @@ The idea is to ask "What's the scope of the element I'm styling?" If it's an ele
 
 [![inverted triangle](http://media.creativebloq.futurecdn.net/sites/creativebloq.com/files/images/2015/10/itcssmain.jpg)](https://www.youtube.com/watch?v=1OKZOV-iLj4&feature=youtu.be "Harry Roberts - Managing CSS Projects with ITCSS")
 
-## BEMIT
+### BEMIT
 
-### Namespace prefixes
+#### Namespace prefixes
 
 To address the issue of scope, we can use namespace prefixes. Does the element potentially appear on every page of the site? If so, it's probably an _object_, and should have an **o-** in front of it. Is the element repeated, but only used on one particular page, such as the _teasers_ example? Then it's probably a _component_, and should take the prefix **c-**, for example, `c-teaser`.
 
@@ -122,13 +153,13 @@ Possible prefixes:
 
 #### Object Namespace: o-
 
-Format: 
+Format:
 
 ```css
 .o-object-name[<element>|<modifier>] {}
 ```
 
-Example: 
+Example:
 
 ```css
 .o-layout {}
@@ -186,7 +217,7 @@ Organizing styles into media queries should eliminate the need for this level of
 
 ## Conclusion
 
-### BEM 
+### BEM
 
 - _Blocks_ are HTML elements that are likely to contain other content which is related in some way. Think of `<figure>` elements which contain and image and caption.
 - Inside a block, you'll find smaller _elements_. These should be marked up with the suffix __element-name.
@@ -245,15 +276,15 @@ Write CSS based on specificity in the least wasteful order as possible.
 #
 #
 #
-Global definitions and styles 
+Global definitions and styles
 */
 
 * { box-sizing: border-box; }
 
 body {
-    font: 100%/1.4 -apple-system, BlinkMacSystemFont, 
-    "Segoe UI", "Roboto", "Oxygen", 
-    "Ubuntu", "Cantarell", "Fira Sans", 
+    font: 100%/1.4 -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans",
     "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
