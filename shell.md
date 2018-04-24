@@ -27,6 +27,74 @@ Now when you go to git repository form the terminal it will display currently ch
 export PS1="\W\$(parse_git_branch)\[\033[00m\] $ "
 ```
 
+## Colors
+
+### Foreground & background colour commands
+
+```bash
+tput setab [1-7] # Set the background colour using ANSI escape
+tput setaf [1-7] # Set the foreground colour using ANSI escape
+```
+
+Colours are as follows:
+
+```bash
+Num  Colour    #define         R G B
+
+0    black     COLOR_BLACK     0,0,0
+1    red       COLOR_RED       1,0,0
+2    green     COLOR_GREEN     0,1,0
+3    yellow    COLOR_YELLOW    1,1,0
+4    blue      COLOR_BLUE      0,0,1
+5    magenta   COLOR_MAGENTA   1,0,1
+6    cyan      COLOR_CYAN      0,1,1
+7    white     COLOR_WHITE     1,1,1
+```
+
+There are also non-ANSI versions of the colour setting functions (setb instead of setab, and setf instead of setaf) which use different numbers, not given here.
+
+### Text mode commands
+
+```bash
+tput bold    # Select bold mode
+tput dim     # Select dim (half-bright) mode
+tput smul    # Enable underline mode
+tput rmul    # Disable underline mode
+tput rev     # Turn on reverse video mode
+tput smso    # Enter standout (bold) mode
+tput rmso    # Exit standout mode
+```
+
+### Clear and insert commands
+
+```bash
+tput ech N   # Erase N characters
+tput clear   # Clear screen and move the cursor to 0,0
+tput el 1    # Clear to beginning of line
+tput el      # Clear to end of line
+tput ed      # Clear to end of screen
+tput ich N   # Insert N characters (moves rest of line forward!)
+tput il N    # Insert N lines
+```
+
+### Other commands
+
+```bash
+tput sgr0    # Reset text format to the terminal's default
+tput bel     # Play a bell
+```
+
+### Example
+
+```bash
+red=`tput setaf 1`
+green=`tput setaf 2`
+reset=`tput sgr0`
+echo "${red}red text ${green}green text${reset}"
+```
+
+-[Stack Overflow source](https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux)
+
 ## Arrays
 
 - [http://www.thegeekstuff.com/2010/06/bash-array-tutorial](http://www.thegeekstuff.com/2010/06/bash-array-tutorial)
