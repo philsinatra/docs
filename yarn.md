@@ -3,10 +3,17 @@
 ## Installing Yarn
 
 ```bash
-npm install -g yarn
+# npm install -g yarn
+curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 ```
 
 [yarnpkg.com/en/docs/install](https://yarnpkg.com/en/docs/install)
+
+Test what packages are globally installed with Yarn:
+
+```bash
+yarn global list
+```
 
 ## Initialize a project
 
