@@ -12,6 +12,16 @@ Sample HTML
 </video>
 ```
 
+```html
+<div style="margin-bottom: 1.5rem">
+  <video poster="../media/CID/filename-poster.jpg" preload="metadata" controls>
+    <source src="../media/CID/filename.mp4" type="video/mp4">
+    <source src="../media/CID/filename.webm" type="video/webm">
+    <track label="English Captions" kind="captions" srclang="en" src="../media/CID/filename.vtt" default>
+  </video>
+</div>
+```
+
 Sample VTT
 
 ```vtt
