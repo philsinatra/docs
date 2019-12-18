@@ -18,6 +18,22 @@ sudo port select --set python3 python37
 #!/opt/local/bin/python
 ```
 
+```bash
+# python27 has the following notes:
+#   To make this the default Python or Python 2 (i.e., the version run by the
+#   'python' or 'python2' commands), run one or both of:
+
+      sudo port select --set python python27
+      sudo port select --set python2 python27
+
+# python37 has the following notes:
+#   To make this the default Python or Python 3 (i.e., the version run by the
+#   'python' or 'python3' commands), run one or both of:
+
+      sudo port select --set python python37
+      sudo port select --set python3 python3
+```
+
 ### Don't Use Homebrew
 
 But if you do...
