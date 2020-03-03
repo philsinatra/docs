@@ -6,9 +6,9 @@ Sample HTML
 
 ```html
 <video poster="https://cdn.brad.is/images/thumb.jpg" preload>
-	<source src="https://cdn.brad.is/videos/curiosity.mp4" type="video/mp4">
-	<source src="https://cdn.brad.is/videos/curiosity.webm" type="video/webm">
-	<track label="English Captions" kind="captions" srclang="en" src="video_cc_en.vtt" default>
+  <source src="https://cdn.brad.is/videos/curiosity.mp4" type="video/mp4">
+  <source src="https://cdn.brad.is/videos/curiosity.webm" type="video/webm">
+  <track label="English Captions" kind="captions" srclang="en" src="video_cc_en.vtt" default>
 </video>
 ```
 
@@ -66,13 +66,13 @@ that fully replicate the HTML5 MediaElement API
 
 In this example, the _line/position_ attributes are applied to each of the track captions to position the text in the center of the screen horizontally and 90% from the top, which will leave room at the bottom of the video (for a fixed nav bar?).
 
-- **webvtt** `.vtt` format captions work on both Windows and OSX.
-- There is minimal styling available on non `-webkit` browsers.
-  - OSX browsers by default position white text on a semi-transparent black background.
-  - <span style="color:red">IE11 positions white text with a thin black border on a totally transparent background.</span>
+- **webvtt** `.vtt` format captions work on both Windows and OSX
+- There is minimal styling available on non `-webkit` browsers
+  - OSX browsers by default position white text on a semi-transparent black background
+  - IE11 positions white text with a thin black border on a totally transparent background
 - There is sufficient positioning capabilities built into the `.vtt` file
 
-# Simple Delivery Profile (SDP) / TTML Format
+## Simple Delivery Profile (SDP) / TTML Format
 
 Sample HTML:
 
@@ -124,7 +124,7 @@ Sample TTML file (`SDPTest.ttml`):
 </tt>
 ```
 
-- **TTML** `.ttml` format captions work on <span style="color:red">IE11 only</span>.
+- **TTML** `.ttml` format captions work on IE11 only.
 - There is **extended** styling and positioning capabilities built into the `.ttml` file.
 
 ## Hybrid Solution
@@ -133,7 +133,7 @@ Initial solution concept was to supply multiple `track` elements and let the bro
 
 Option 2 was to incorporate IE Conditional comments to write one of the two `track` formats based on if the browser is IE or not. However Microsoft has dropped support of conditional comments as of >IE9.
 
-<blockquote>Support for conditional comments has been removed in Internet Explorer 10 standards and quirks modes for improved interoperability and compliance with HTML5. This means that Conditional Comments are now treated as regular comments, just like in other browsers. This change can impact pages written exclusively for Windows Internet Explorer or pages that use browser sniffing to alter their behaviour in Internet Explorer.</blockquote>
+> Support for conditional comments has been removed in Internet Explorer 10 standards and quirks modes for improved interoperability and compliance with HTML5. This means that Conditional Comments are now treated as regular comments, just like in other browsers. This change can impact pages written exclusively for Windows Internet Explorer or pages that use browser sniffing to alter their behaviour in Internet Explorer.
 
 - [Internet Explorer Dev Center](https://msdn.microsoft.com/library/hh801214\(v=vs.85\).aspx)
 
@@ -244,11 +244,22 @@ This example is based on some simple text based links being used as video contro
 Here's the Javascript to control the video playback and captioning functions:
 
 ```javascript
-var videoElement = document.querySelector('video');
-var textTracks = videoElement.textTracks; // Get all text tracks included
-var textTrack = textTracks[0]; // Corresponds to the first track element
-var kind = textTrack.kind; // e.g. "subtitles"
-var mode = textTrack.mode; // e.g. "disabled, hidden" or "showing"
+window.setTimeout(function() {
+  var videoElement = document.querySelector('video');
+
+if (videoElement) {
+  var textTracks = videoElement.textTracks; // Get all text tracks included
+  var textTrack = textTracks[0]; // Corresponds to the first track element
+  var kind = textTrack.kind; // e.g. "subtitles"
+  var mode = textTrack.mode; // e.g. "disabled, hidden" or "showing"
+
+  // Example toggling all captions off onload
+  if (mode === 'showing') {
+    document.querySelector('video').textTracks[0].mode = 'hidden';
+    mode = 'hidden';
+  }
+}
+}, 0)
 
 // A timeout is used to allow the video to preload for a few seconds before playback begins
 var t = window.setTimeout(function() {
@@ -307,6 +318,7 @@ btn_captions.addEventListener('click', toggleCaptions, false);
 
 - For captions to work, files must be served from a web server. Running the page locally will not allow caption functionality.
 - Web server must include MIME support:
+
   ```apache
   AddType text/vtt .vtt
   AddType application/ttml+xml .ttml
@@ -334,7 +346,6 @@ btn_captions.addEventListener('click', toggleCaptions, false);
 - [https://books.google.com/books?id=fV0nCgAAQBAJ&pg=PA174&lpg=PA174&dq=webvtt+move+from+bottom+of+video&source=bl&ots=uFnrDyAKYz&sig=zQZEAtRiWMlvPt9_khV2DuM6LGA&hl=en&sa=X&ved=0ahUKEwjF3uWq99TMAhUGWT4KHXa6CmEQ6AEIQzAG#v=onepage&q=webvtt%20move%20from%20bottom%20of%20video&f=false](https://books.google.com/books?id=fV0nCgAAQBAJ&pg=PA174&lpg=PA174&dq=webvtt+move+from+bottom+of+video&source=bl&ots=uFnrDyAKYz&sig=zQZEAtRiWMlvPt9_khV2DuM6LGA&hl=en&sa=X&ved=0ahUKEwjF3uWq99TMAhUGWT4KHXa6CmEQ6AEIQzAG#v=onepage&q=webvtt%20move%20from%20bottom%20of%20video&f=false)
 - [https://msdn.microsoft.com/en-us/library/hh772556(v=vs.85).aspx](https://msdn.microsoft.com/en-us/library/hh772556\(v=vs.85\).aspx)
 - [https://github.com/iandevlin/mdn](https://github.com/iandevlin/mdn)
-
 
 ## Detect Autoplay
 
@@ -377,7 +388,6 @@ function detect_autoplay(acceptable_delay) {
 
 - [reference](http://stackoverflow.com/questions/7120703/how-do-i-detect-if-the-html5-autoplay-attribute-is-supported)
 
-
 ## Dynamically Add Video Content
 
 ```javascript
@@ -390,19 +400,19 @@ video.autoplay = false;
 video.poster = 'path_to_media.jpg';
 
 video.addEventListener('loadedmetadata', function() {
-	var track = document.createElement('track');
-	track.kind = 'captions';
-	track.label = 'English Captions';
-	track.srclang = 'en';
-	track.src = 'path_to_file.vtt';
+  var track = document.createElement('track');
+  track.kind = 'captions';
+  track.label = 'English Captions';
+  track.srclang = 'en';
+  track.src = 'path_to_file.vtt';
 
-	// New track's default mode is "hidden".
-	track.addEventListener('load', function() {
-		this.mode = 'showing';
-		video.textTracks[0].mode = 'showing';
-	});
+  // New track's default mode is "hidden".
+  track.addEventListener('load', function() {
+    this.mode = 'showing';
+    video.textTracks[0].mode = 'showing';
+  });
 
-	this.appendChild(track);
+  this.appendChild(track);
 });
 
 var video_container = document.querySelector('.video_container');
