@@ -18,6 +18,37 @@ A great resource with additional shell enhancements and functions: [https://gith
 
 - [SVG Patterns](http://www.heropatterns.com/?mc_cid=a2f92af018&mc_eid=aad7905fc1)
 
+## NATO Phonetic Alphabet
+
+|Letter|Code Word|
+|----------|--------|
+|A|Alfa|
+|B|Bravo|
+|C|Charlie|
+|D|Delta|
+|E|Echo|
+|F|Foxtrot|
+|G|Golf|
+|H|Hotel|
+|I|India|
+|J|Juliett|
+|K|Kilo|
+|L|Lima|
+|M|Mike|
+|N|November|
+|O|Oscar|
+|P|Papa|
+|Q|Quebec|
+|R|Romeo|
+|S|Sierra|
+|T|Tango|
+|U|Uniform|
+|V|Victor|
+|W|Whiskey|
+|X|X-ray|
+|Y|Yankee|
+|Z|Zulu|
+
 ## Video Placeholder
 
 ```html

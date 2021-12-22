@@ -15,7 +15,9 @@
 
 ## Cross-site Access
 
+```shell
     bad URI or cross-site access not allowed
+```
 
 Add the following to the `.htaccess` file on the source server (where the resources are coming from, not where they are loading).
 
@@ -157,4 +159,3 @@ AddDefaultCharset utf-8
 </ifmodule>
 # END GZIP
 ```
-
