@@ -72,7 +72,9 @@ yarn self-update
 
 - [https://next.yarnpkg.com/getting-started](https://next.yarnpkg.com/getting-started)
 
-You can enable PnP support in VS Code via:
+### Fix VSCode Error
+
+To enable PnP support in VSCode:
 
 ```shell
 yarn dlx @yarnpkg/sdks vscode

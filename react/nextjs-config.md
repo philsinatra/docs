@@ -1,5 +1,11 @@
 # NextJS Config
 
+## Yarn 2 PNP 
+
+Project needs to include `pages/404.tsx` and `pages/_error.tsx`
+
+- [https://github.com/vercel/next.js/issues/21828#issuecomment-949814681](https://github.com/vercel/next.js/issues/21828#issuecomment-949814681)
+
 ## Common Dependencies
 
 ```json
