@@ -66,6 +66,22 @@ yarn clean
 yarn self-update
 ```
 
+---
+
+## Yarn 2
+
+- [https://next.yarnpkg.com/getting-started](https://next.yarnpkg.com/getting-started)
+
+You can enable PnP support in VS Code via:
+
+```shell
+yarn dlx @yarnpkg/sdks vscode
+```
+
+- [https://stackoverflow.com/questions/54954337/is-it-possible-to-use-yarn-pnp-with-typescript-vscode](https://stackoverflow.com/questions/54954337/is-it-possible-to-use-yarn-pnp-with-typescript-vscode)
+
+---
+
 ## Resources
 
 - [Homepage](https://yarnpkg.com)
