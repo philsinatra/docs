@@ -1,3 +1,5 @@
+# Svelte POST API
+
 ## Route
 
 ```typescript
@@ -24,13 +26,13 @@ onMount(() => {
   }
 });
 ```
-  
+
 ## Endpoint
-  
+
 An example filename: `src/routes/api/endpoint.ts`
-  
+
 💡 <https://bit.ly/3yEls4L> Rich Harris explains parsing the body before identifying the endpoints.
-  
+
 ```typescript
 export async function POST({ request }: { request: Request }) {
   const body = await request.json();
