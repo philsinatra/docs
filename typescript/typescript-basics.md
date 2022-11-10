@@ -31,6 +31,30 @@ const person2: Person = {
 }
 ```
 
+### Passing Dynamic Keys to an Object
+
+[Record type](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)
+
+```typescript
+const createCache = () => {
+  const cache: Record<string, string> = {}
+  
+  const add = (id: string, value: string) => {
+    cache[id] = value
+  }
+  
+  const remove = (id: string) => {
+    delete cache[id]
+  }
+  
+  return {
+    cache,
+    add,
+    remove
+  }
+}
+```
+
 ## Functions
 
 ```typescript
