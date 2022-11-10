@@ -73,6 +73,29 @@ function pow(x: number, y: number): void {
 }
 ```
 
+### Typing Functions
+
+Useful when we pass functions into other functions
+<https://www.totaltypescript.com/tutorials/beginners-typescript/typing-functions/solution>
+
+```typescript
+type FocusListener = (is_focused: boolean) => void
+
+const add_listener(on_focus_change: FocusListener) => {
+  window.addEventListener('focus', () => {
+    const array_of_strings = on_focus_change(true)
+  })
+
+  window.addEventListener('blur', () => {
+    on_focus_change(false)
+  })
+
+  add_listener((is_focused) => {
+    // console.log({is_focused})
+  })
+}
+```
+
 ## Arrays
 
 ```typescript
@@ -92,6 +115,49 @@ const arr: MyList = []
 arr.push(1)
 arr.push(23)
 arr.push(false)
+```
+
+## Try-Catch
+
+```typescript
+const my_function = (state: 'fail' | 'succeed') => {
+  try {
+    if (state === 'fail')
+      throw new Error('Failure')
+  } catch (e) {
+    if (e instanceof Error)
+      return e.message
+  }
+}
+```
+
+## Inheriting Interface Properties
+
+```typescript
+interface Base {
+  id: number
+}
+
+interface User extends Base {
+  first_name: string
+  last_name: string
+}
+```
+
+## Selectively Construct Types from Other Types
+
+```typescript
+interface User {
+  id: string,
+  first_name: string,
+  last_name: string
+}
+
+// Option 1: Omit
+type MyType1 = Omit<User, 'first_name'>
+
+// Option 2: Pick
+type MyType2 = Pick<User, 'id' | 'last_name'>
 ```
 
 ## References
